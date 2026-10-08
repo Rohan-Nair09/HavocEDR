@@ -74,6 +74,10 @@ class _BackendSignals(QObject):
 
 
 def main():
+    smoke_test = "--smoke-test" in sys.argv[1:]
+    if smoke_test:
+        sys.argv.remove("--smoke-test")
+
     app = QApplication(sys.argv)
     logging.basicConfig(level=logging.INFO)
 
@@ -83,6 +87,7 @@ def main():
     window.show()
     signals = _BackendSignals()
     backend_state = {"writer": None, "monitors": []}
+    smoke_test_failed = {"value": False}
 
     def on_backend_ready(writer, monitors):
         backend_state["writer"] = writer
@@ -92,9 +97,15 @@ def main():
         if callable(refresh):
             refresh()
         logger.info("Backend startup completed.")
+        if smoke_test:
+            QTimer.singleShot(1500, app.quit)
 
     def on_backend_failed(message):
         logger.error("Backend startup failed: %s", message)
+        if smoke_test:
+            smoke_test_failed["value"] = True
+            app.exit(1)
+            return
         QMessageBox.critical(window, "HavocEDR startup failed", message)
 
     def start_backend_worker():
@@ -120,7 +131,11 @@ def main():
             stop_backend(writer, backend_state["monitors"])
 
     app.aboutToQuit.connect(shutdown_backend)
-    sys.exit(app.exec())
+    if smoke_test:
+        # Fail rather than report a pass if backend startup hangs.
+        QTimer.singleShot(60000, lambda: app.exit(2))
+    exit_code = app.exec()
+    return 1 if smoke_test_failed["value"] else exit_code
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

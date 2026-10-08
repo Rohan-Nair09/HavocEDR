@@ -1,0 +1,87 @@
+name: Windows build and release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install app and build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-build.txt
+
+      - name: Run unit checks
+        run: python -m unittest discover -s tests -v
+
+      - name: Build the one-file Windows app
+        run: pyside6-deploy -c pysidedeploy.spec --force --name HavocEDR
+
+      - name: Verify packaged app starts and initializes its backend
+        shell: pwsh
+        run: |
+          $exe = ".\release\HavocEDR.exe"
+          if (-not (Test-Path -LiteralPath $exe)) {
+            throw "Build did not produce $exe"
+          }
+          $smokeData = Join-Path $env:RUNNER_TEMP "HavocEDR-smoke"
+          New-Item -ItemType Directory -Path $smokeData -Force | Out-Null
+          $dbPath = (Join-Path $smokeData "havocguard.db").Replace("\", "/")
+          $env:DATABASE_URL = "sqlite:///$dbPath"
+          & $exe --smoke-test
+          if ($LASTEXITCODE -ne 0) {
+            throw "Packaged app smoke check failed with exit code $LASTEXITCODE"
+          }
+
+      - name: Create checksum
+        shell: pwsh
+        run: |
+          $hash = (Get-FileHash .\release\HavocEDR.exe -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$hash  HavocEDR.exe" | Set-Content .\release\SHA256SUMS.txt -Encoding ascii
+
+      - name: Save build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: HavocEDR-Windows-x64
+          path: |
+            release/HavocEDR.exe
+            release/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publish preview release
+        if: startsWith(github.ref, 'refs/tags/v') || inputs.release_version != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_VERSION: ${{ inputs.release_version || github.ref_name }}
+        shell: pwsh
+        run: |
+          $notes = @'
+          HavocEDR Windows x64 preview.
+
+          Download HavocEDR.exe and double-click to launch. The app starts in Monitor Only mode. The AI Analyst requires Ollama and the qwen3:4b model to be installed separately.
+
+          Some Sysmon and USB telemetry depends on Windows permissions. Response actions are opt-in. This build is unsigned; Windows may show an unknown-publisher warning.
+
+          Verify the executable with SHA256SUMS.txt.
+          '@
+          gh release create $env:RELEASE_VERSION --target $env:GITHUB_SHA .\release\HavocEDR.exe .\release\SHA256SUMS.txt --title "HavocEDR $env:RELEASE_VERSION - Windows preview" --notes $notes --prerelease
+
