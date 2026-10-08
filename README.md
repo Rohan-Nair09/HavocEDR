@@ -1,7 +1,7 @@
 # HavocEDR
 
 <p>
-  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10 or newer">
+  <img src="https://img.shields.io/badge/Python-3.12%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.12 or newer">
   <img src="https://img.shields.io/badge/Qt-PySide6-41CD52?style=flat-square&logo=qt&logoColor=white" alt="PySide6">
   <img src="https://img.shields.io/badge/Platform-Windows-0078D4?style=flat-square&logo=windows&logoColor=white" alt="Windows">
   <img src="https://img.shields.io/badge/Storage-SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white" alt="SQLite">
@@ -28,7 +28,7 @@ The Windows one-file build is being prepared. I’ll attach it here after the re
 
 ## 💻 Run from source
 
-On Windows 10 or 11 with Python 3.10+:
+On Windows 10 or 11 with Python 3.12+:
 
 ```powershell
 git clone https://github.com/Rohan-Nair09/HavocEDR.git
