@@ -1,0 +1,3431 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Mini Project  
+LAB MANUAL 
+7th Semester 
+Department of CE & CSE 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+This is to certify that Mr.  __________________________________ Branch 
+______________________ Semester ________ has satisfactorily completed 
+his/her term work in the Subject of Mini Project within the four 
+walls of the institute. 
+ 
+ 
+ 
+Date of Submission: _____________________ 
+ 
+ 
+ 
+ 
+ 
+_________________                                          _________________ 
+ Sign – in – Charge                                           Head of Department 
+CERTIFICATE 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+IDEX 
+ 
+Sr No. List of Experiments Sign with 
+Date 
+1. Identify project problem statement and define project 
+objectives. 
+ 
+2. Perform requirement gathering and feasibility analysis.  
+3. Prepare Software Requirement Specification (SRS) 
+document. 
+ 
+4. Design system architecture and workflow diagrams.  
+5. Create UI/UX wireframes and screen designs for the 
+project. 
+ 
+6. Setup project environment, tools, and required 
+dependencies. 
+ 
+7. Develop frontend modules for the application.  
+8. Implement backend logic and database connectivity.  
+9. Integrate APIs or third-party services in the project.  
+10. Implement user authentication and security features.  
+11. Perform CRUD operations in the application.  
+12. Conduct unit testing and debugging of project modules.  
+13. Optimize application performance and improve user 
+experience. 
+ 
+14. Prepare project documentation, report, and presentation.  
+15. Demonstrate final mini project with deployment and 
+viva evaluation. 
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 1 
+Identify Project Problem Statement and Define Project Objectives 
+Aim 
+To identify the cybersecurity problem addressed by the project and define clear objectives for 
+developing an intelligent Endpoint Detection and Response (EDR) system capable of 
+monitoring endpoint activities, detecting threats, and assisting users in security incident 
+response. 
+Objectives 
+ To study cybersecurity challenges associated with Windows endpoints. 
+ To identify limitations of traditional security solutions. 
+ To formulate a well-defined project problem statement. 
+ To establish the scope of the proposed system. 
+ To define measurable objectives for the development of HavocGuard EDR. 
+ To provide a foundation for the design and implementation phases of the project. 
+Introduction 
+In today's digital world, organizations and individuals depend heavily on computer systems for 
+communication, data storage, financial transactions, and business operations. As the use of 
+technology increases, cyber threats continue to evolve in both frequency and sophistication. 
+Attackers frequently target endpoint devices such as desktops, laptops, and workstations 
+because they serve as entry points into larger systems and networks. 
+Windows operating systems generate a large amount of system activity including process 
+creation, file modifications, registry changes, network connections, and service executions. 
+Monitoring these activities manually is difficult due to the volume of data generated every 
+second. As a result, suspicious behaviour may remain unnoticed until significant damage has 
+already occurred. 
+Traditional antivirus solutions mainly focus on signature-based detection and often struggle to 
+detect advanced threats, zero-day attacks, insider threats, and suspicious behavioural patterns. 
+This creates a need for intelligent monitoring systems capable of continuously observing 
+endpoint activities, identifying anomalies, and assisting users in understanding potential 
+security incidents. 
+To address these challenges, the project "HavocGuard EDR: An AI-Powered Endpoint 
+Detection and Response System for Windows" is proposed. The system combines endpoint 
+monitoring, threat detection, Machine Learning analysis, and AI-assisted security 
+recommendations within a unified desktop application. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Problem Identification 
+Endpoint devices are continuously exposed to a variety of security risks including malware 
+infections, unauthorized access attempts, suspicious process execution, malicious scripts, 
+registry manipulation, and abnormal network communications. 
+Several challenges were identified during the problem analysis stage: 
+1. Lack of Real-Time Endpoint Visibility 
+Users often have limited visibility into processes, services, registry modifications, and network 
+activities occurring on their systems. 
+2. Increasing Complexity of Cyber Threats 
+Modern attacks frequently employ sophisticated techniques that bypass traditional signature-
+based security tools. 
+3. Difficulty in Threat Analysis 
+Security alerts often contain technical information that may be difficult for users to understand 
+and interpret. 
+4. Delayed Incident Response 
+Without proper monitoring and analysis mechanisms, suspicious activities may remain 
+undetected for extended periods. 
+5. Limited Accessibility of EDR Solutions 
+Many commercial Endpoint Detection and Response solutions are expensive and primarily 
+designed for enterprise environments, making them less accessible for educational and research 
+purposes. 
+Problem Statement 
+Current security solutions often fail to provide comprehensive visibility into endpoint activities 
+and may struggle to identify emerging threats through behavioural analysis. Users frequently 
+lack the tools required to monitor system activities, detect suspicious behaviour, understand 
+security alerts, and respond effectively to incidents. 
+Therefore, there is a need to develop a lightweight and intelligent Endpoint Detection and 
+Response system that continuously monitors endpoint activities, detects suspicious behaviour, 
+generates security alerts, and provides AI-assisted recommendations to improve threat analysis 
+and incident response. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Proposed Solution 
+The proposed solution is HavocGuard EDR, a Windows-based Endpoint Detection and 
+Response system designed to provide continuous monitoring and intelligent threat detection 
+capabilities. 
+The system will: 
+ Monitor processes and services. 
+ Track network activities. 
+ Monitor file integrity and registry modifications. 
+ Collect Windows endpoint telemetry. 
+ Detect suspicious behaviour using rule-based techniques. 
+ Apply Machine Learning models for anomaly detection. 
+ Generate security alerts and threat scores. 
+ Provide AI-generated explanations and mitigation recommendations. 
+ Present monitoring information through an interactive dashboard. 
+This approach enables users to gain better visibility into endpoint activities while simplifying 
+threat analysis and response. 
+Project Objectives 
+The primary objectives of HavocGuard EDR are: 
+1. Endpoint Monitoring 
+To continuously monitor endpoint activities including processes, services, files, registry 
+entries, and network connections. 
+2. Threat Detection 
+To identify suspicious behaviour using predefined detection rules and behavioural analysis 
+techniques. 
+3. Machine Learning Integration 
+To improve threat detection accuracy through Machine Learning-based analysis of endpoint 
+telemetry. 
+4. AI-Assisted Security Analysis 
+To provide understandable explanations of detected threats using Generative AI. 
+5. Security Alert Generation 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+To notify users when suspicious activities or potential threats are detected. 
+6. Incident Response Support 
+To assist users in making informed decisions regarding threat mitigation and response actions. 
+7. Security Reporting 
+To generate reports and analytics for security monitoring and investigation purposes. 
+Scope of the Project 
+The scope of HavocGuard EDR includes: 
+ Windows endpoint monitoring. 
+ Process and service monitoring. 
+ Network connection monitoring. 
+ Registry activity monitoring. 
+ File integrity monitoring. 
+ Threat detection and alert generation. 
+ AI-assisted security recommendations. 
+ Dashboard visualization and reporting. 
+The project focuses on Windows-based systems and does not include enterprise-scale 
+centralized management features. 
+Expected Outcomes 
+The successful completion of the project is expected to result in: 
+ A functional Endpoint Detection and Response application. 
+ Improved visibility into endpoint activities. 
+ Faster detection of suspicious behaviour. 
+ Enhanced understanding of security incidents. 
+ AI-assisted threat analysis and recommendations. 
+ Practical implementation of cybersecurity, Machine Learning, and software 
+engineering concepts. 
+Observation 
+The analysis of endpoint security challenges revealed the importance of continuous monitoring 
+and behavioural analysis in detecting modern cyber threats. Existing security tools may not 
+always provide sufficient visibility or understandable threat explanations. These observations 
+justified the need for developing an intelligent endpoint monitoring solution. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Result 
+The project problem statement was successfully identified, and clear objectives were defined 
+for the development of HavocGuard EDR. The identified requirements, scope, and objectives 
+provide a structured foundation for the design, implementation, testing, and deployment phases 
+of the project. 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 2 
+Requirement Gathering and Feasibility Analysis 
+ 
+Aim 
+To gather and analyze the functional and non-functional requirements of the proposed system 
+and evaluate the technical, operational, and economic feasibility of developing HavocGuard 
+EDR. 
+Objectives 
+ To identify the requirements of the proposed system. 
+ To classify requirements into functional and non-functional categories. 
+ To understand the expectations of potential users. 
+ To evaluate the technical feasibility of the project. 
+ To analyze operational and economic feasibility. 
+ To determine whether the proposed system can be successfully developed within 
+available resources and constraints. 
+Introduction 
+Requirement gathering is one of the most important phases in the Software Development Life 
+Cycle (SDLC). It involves identifying the needs, expectations, and constraints of stakeholders 
+before designing and implementing the system. Proper requirement analysis helps developers 
+understand what functionalities the software should provide and ensures that the final product 
+meets user expectations. 
+For cybersecurity applications such as Endpoint Detection and Response (EDR) systems, 
+requirement gathering plays a critical role because the system must monitor endpoint activities, 
+detect suspicious behaviour, generate alerts, and support incident response while maintaining 
+reliability and performance. 
+The proposed project, HavocGuard EDR, is intended to provide a lightweight Windows-
+based endpoint monitoring solution that combines rule-based detection, Machine Learning 
+analysis, and Generative AI-assisted threat explanations. Therefore, a detailed requirement 
+gathering and feasibility analysis was conducted before proceeding with system design and 
+development. 
+Requirement Gathering 
+The requirements for HavocGuard EDR were identified through the study of existing endpoint 
+security solutions, cybersecurity best practices, project objectives, and expected user needs. 
+The gathered requirements were categorized into functional and non-functional requirements. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Functional Requirements 
+Functional requirements define the specific features and services that the system must provide. 
+1. Process Monitoring 
+The system should continuously monitor running processes and detect suspicious process 
+activities. 
+2. Service Monitoring 
+The system should track Windows services and identify unauthorized service modifications. 
+3. Network Monitoring 
+The application should monitor active network connections and detect unusual communication 
+patterns. 
+4. File Integrity Monitoring 
+The system should monitor protected files and folders for unauthorized modifications. 
+5. Registry Monitoring 
+The application should track changes made to critical Windows Registry entries. 
+6. Threat Detection 
+The system should identify suspicious activities using predefined security rules and 
+behavioural analysis techniques. 
+7. Machine Learning Analysis 
+The application should analyze collected telemetry data and assist in identifying anomalous 
+behaviour. 
+8. Alert Generation 
+The system should generate alerts whenever suspicious activities are detected. 
+9. AI Security Analyst 
+The application should provide AI-generated explanations and mitigation recommendations 
+for detected threats. 
+10. Reporting and Analytics 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The system should generate reports and provide graphical visualization of security events. 
+Non-Functional Requirements 
+Non-functional requirements describe how the system should perform rather than what it 
+should do. 
+1. Performance 
+The system should operate efficiently with minimal CPU and memory consumption. 
+2. Reliability 
+The application should provide continuous monitoring without frequent failures or 
+interruptions. 
+3. Usability 
+The graphical interface should be easy to understand and operate. 
+4. Scalability 
+The modular architecture should allow future enhancements and additional monitoring 
+modules. 
+5. Security 
+Monitoring data, reports, and system configurations should be protected from unauthorized 
+modification. 
+6. Maintainability 
+The software should be structured in a way that simplifies debugging, testing, and future 
+updates. 
+7. Compatibility 
+The system should support modern Windows operating systems, including Windows 10 and 
+Windows 11. 
+ 
+Hardware Requirements 
+The minimum hardware requirements identified for the project are: 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Component Requirement 
+Processor Intel Core i5 or equivalent 
+RAM 8 GB or Higher 
+Storage 500 MB Free Space 
+Network Internet Connection (for AI integration) 
+Display 1366 × 768 Resolution or Higher 
+ 
+Software Requirements 
+Software Purpose 
+Windows 10 / Windows 11 Operating System 
+Python 3.12 Development Platform 
+Visual Studio Code IDE 
+SQLite Database 
+PySide6 GUI Development 
+Microsoft Sysmon Endpoint Telemetry Collection 
+Git & GitHub Version Control 
+Scikit-learn Machine Learning 
+ 
+Feasibility Analysis 
+Feasibility analysis determines whether the proposed project can be developed successfully 
+using available resources, technology, and time. 
+1. Technical Feasibility 
+The project is technically feasible because all required technologies are readily available and 
+well-supported. 
+Python provides extensive libraries for system monitoring, Machine Learning, database 
+management, and GUI development. Microsoft Sysmon provides detailed endpoint telemetry, 
+while SQLite offers lightweight database management. The development team possesses 
+sufficient knowledge of Python programming, cybersecurity concepts, and software 
+development methodologies. 
+Therefore, the project can be implemented using existing tools and technologies without 
+requiring specialized hardware or proprietary software. 
+2. Operational Feasibility 
+The proposed system is operationally feasible because it addresses real cybersecurity 
+challenges faced by users. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The application provides a centralized dashboard for monitoring endpoint activities and 
+simplifies threat analysis through AI-generated recommendations. The user interface is 
+designed to be intuitive, enabling users with varying levels of technical expertise to operate the 
+system effectively. 
+The system integrates naturally into Windows environments and supports practical endpoint 
+security monitoring requirements. 
+3. Economic Feasibility 
+The project is economically feasible because it relies primarily on open-source technologies 
+and freely available development tools. 
+The major technologies used, including Python, SQLite, Visual Studio Code, and Scikit-learn, 
+are available at no cost. This significantly reduces development expenses and makes the project 
+suitable for academic and research purposes. 
+No specialized commercial software licenses are required for development and testing. 
+4. Schedule Feasibility 
+The project is feasible within the academic project timeline. 
+The modular architecture allows development to be divided into manageable phases such as 
+requirement analysis, system design, frontend development, backend implementation, Machine 
+Learning integration, testing, and documentation. This phased approach ensures that project 
+milestones can be achieved within the allotted timeframe. 
+Expected Benefits 
+The proposed system is expected to provide the following benefits: 
+ Improved endpoint visibility. 
+ Faster threat detection. 
+ Enhanced security monitoring. 
+ AI-assisted threat analysis. 
+ Better understanding of cybersecurity concepts. 
+ Practical implementation of Machine Learning techniques. 
+ Centralized monitoring and reporting. 
+Observation 
+The requirement gathering process identified the key functionalities required for an effective 
+endpoint monitoring system. The feasibility analysis confirmed that the project can be 
+successfully developed using available technologies, resources, and development skills. The 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+proposed system addresses real-world cybersecurity challenges while remaining suitable for 
+academic implementation. 
+Result 
+The functional and non-functional requirements of HavocGuard EDR were successfully 
+identified and documented. Technical, operational, economic, and schedule feasibility analyses 
+confirmed that the project is practical, achievable, and suitable for implementation using 
+available resources and technologies. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 3 
+Preparation of Software Requirement Specification (SRS) 
+Document 
+ 
+Aim 
+To prepare a Software Requirement Specification (SRS) document for HavocGuard EDR, 
+defining the system requirements, software architecture, functional modules, and performance 
+expectations before implementation. 
+ 
+Objective 
+ To understand the purpose of an SRS document.  
+ To define the functional and non-functional requirements of the system.  
+ To identify system users and operating environment.  
+ To prepare a structured software specification document.  
+ To provide a reference for the design and development of HavocGuard EDR.  
+ 
+Theory 
+A Software Requirement Specification (SRS) is a formal document that describes the 
+requirements, functionalities, constraints, and overall behavior of a software system. It acts as 
+a blueprint for software development by clearly defining what the system should accomplish 
+before implementation begins. 
+ 
+For HavocGuard EDR, the SRS was prepared by analyzing modern Endpoint Detection and 
+Response (EDR) solutions and Windows security mechanisms. The document includes the 
+project scope, system architecture, functional requirements, non-functional requirements, user 
+interface requirements, workflow, and technology stack. A well-structured SRS helps reduce 
+development errors, improves communication among stakeholders, and serves as a reference 
+throughout the software development life cycle. 
+ 
+1. Introduction 
+HavocGuard EDR is a Windows-based Endpoint Detection and Response system designed to 
+monitor endpoint activities, detect suspicious behavior, and assist users in responding to 
+cybersecurity threats. The application combines Rule-Based Detection, Machine Learning, and 
+Generative AI to provide intelligent threat detection and simplified security analysis. 
+The primary goal of the project is to enhance endpoint visibility, improve threat detection 
+accuracy, and provide AI-assisted recommendations for responding to security incidents. 
+ 
+2. Overall Description 
+The system continuously monitors Windows endpoint activities and collects telemetry from 
+various monitoring modules. It analyses the collected information using predefined detection 
+rules and Machine Learning algorithms to identify suspicious behavior. When a threat is 
+detected, the system generates security alerts, calculates a threat score, and recommends 
+appropriate mitigation actions using the AI Security Analyst. 
+ 
+The application is intended for students, researchers, cybersecurity enthusiasts, and system 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+administrators who require a lightweight endpoint monitoring solution. 
+ 
+3. Functional Requirements 
+The major functionalities of HavocGuard EDR include: 
+ Process Monitoring  
+ Service Monitoring  
+ File Integrity Monitoring  
+ Registry Monitoring  
+ USB Device Monitoring  
+ Network Connection Monitoring  
+ Windows Event Log & Microsoft Sysmon Monitoring  
+ Rule-Based Threat Detection  
+ Machine Learning-Based Threat Detection  
+ Threat Score Calculation  
+ AI Security Analyst  
+ Security Dashboard  
+ Incident Response  
+ Security Report Generation  
+ 
+4. Non-Functional Requirements 
+The system is designed to satisfy the following quality requirements: 
+ Near real-time monitoring  
+ Low CPU and memory consumption  
+ Secure storage of logs using SQLite  
+ User-friendly desktop interface  
+ Reliable and accurate threat detection  
+ Modular architecture for future enhancements  
+ Compatibility with Windows 10 and Windows 11  
+ 
+5. System Architecture 
+HavocGuard EDR follows a modular architecture consisting of multiple monitoring modules, 
+a telemetry collection engine, a threat detection engine, a Machine Learning model, an Incident 
+Response Engine, an AI Security Analyst, and a desktop dashboard. Each module performs a 
+dedicated task while communicating through a centralized SQLite database. 
+ 
+6. System Workflow 
+The workflow begins with the background monitoring agent collecting telemetry from running 
+processes, services, registry activities, files, USB devices, and network connections. The 
+collected telemetry is stored in the SQLite database and analyzed by the Rule-Based Detection 
+Engine and Machine Learning model. 
+ 
+If suspicious behavior is detected, the system calculates a threat score and generates an alert. 
+Depending on the configured response mode, the system either monitors the event, asks the 
+user for confirmation, or automatically performs the selected response action. Finally, the AI 
+Security Analyst generates a threat explanation and recommended mitigation steps. 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+7. Technology Stack 
+ 
+Component Technology Used 
+Programming Language Python 3.12 
+GUI Framework PySide6 
+Database SQLite 
+Machine Learning Scikit-learn 
+Monitoring Libraries Psutil, WMI, Watchdog, PyWin32 
+Windows Telemetry Microsoft Sysmon & Windows Event Logs 
+AI Integration Large Language Model (LLM) API 
+IDE Visual Studio Code 
+ 
+Observation 
+The SRS document clearly defines the objectives, requirements, architecture, and workflow of 
+HavocGuard EDR. It provides a structured roadmap for developing the application while 
+ensuring that all functional and non-functional requirements are properly documented before 
+implementation. 
+ 
+Result 
+A Software Requirement Specification (SRS) document for HavocGuard EDR was 
+successfully prepared. The document serves as the foundation for the design, development, 
+testing, and deployment of the project by clearly defining its requirements, architecture, and 
+operational workflow. 
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 4 
+Design System Architecture and Workflow Diagrams 
+ 
+Aim 
+To design the overall system architecture and workflow of HavocGuard EDR for 
+understanding the interaction between different software modules and the sequence of 
+operations performed during threat detection and response. 
+ 
+Objective 
+ To design the architecture of HavocGuard EDR.  
+ To illustrate the interaction between system modules.  
+ To define the workflow of endpoint monitoring and threat detection.  
+ To understand the data flow within the application.  
+ 
+Theory 
+System architecture represents the overall structure of a software application and defines how 
+different modules communicate with each other. A well-designed architecture improves 
+maintainability, scalability, and performance. 
+ 
+The workflow diagram illustrates the sequence of operations performed by the application from 
+data collection to threat detection and response. It helps developers understand how 
+information flows through the system and ensures that each module functions in the correct 
+order. 
+ 
+For HavocGuard EDR, a modular architecture was adopted to separate monitoring, detection, 
+response, and reporting functionalities. This modular approach simplifies maintenance and 
+allows future enhancements without affecting the entire application. 
+ 
+System Architecture 
+The architecture of HavocGuard EDR consists of the following major modules: 
+ HavocAgent – Collects endpoint telemetry.  
+ Monitoring Modules – Monitor processes, services, files, registry, USB devices, and 
+network activities.  
+ Telemetry Collection Engine – Collects and stores endpoint events.  
+ SQLite Database – Stores logs, alerts, and system data.  
+ Threat Detection Engine – Performs rule-based detection and Machine Learning 
+analysis.  
+ Incident Response Engine – Executes monitoring or response actions.  
+ AI Security Analyst – Generates threat explanations and mitigation recommendations.  
+ Desktop Dashboard – Displays monitoring information, alerts, and reports.  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Workflow 
+The workflow of HavocGuard EDR begins when the monitoring agent starts collecting 
+endpoint telemetry from various monitoring modules. The collected data is stored in the SQLite 
+database and analyzed by the Rule-Based Detection Engine and Machine Learning model. 
+ 
+If suspicious behavior is detected, the system calculates a threat score and generates a security 
+alert. Depending on the selected response mode, the application either monitors the activity, 
+requests user confirmation, or automatically performs the configured response action. Finally, 
+the AI Security Analyst generates a detailed explanation of the detected threat and suggests 
+mitigation steps to assist the user. 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Observation 
+The modular architecture and workflow provide a clear understanding of how HavocGuard 
+EDR collects telemetry, analyses endpoint activities, detects suspicious behavior, responds to 
+security incidents, and presents the results through the desktop dashboard. The design also 
+supports future expansion by allowing additional monitoring modules or detection techniques 
+to be integrated with minimal changes. 
+ 
+Result 
+The system architecture and workflow diagrams for HavocGuard EDR were successfully 
+designed. These diagrams provide a clear representation of the software structure and 
+operational flow, serving as a reference during implementation and testing. 
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 5 
+Create UI/UX wireframes and screen designs for the project. 
+Aim 
+To design an intuitive and user-friendly graphical interface for HavocGuard EDR that enables 
+users to monitor endpoint activities, detect threats, and manage security incidents efficiently. 
+ 
+Objective 
+ To design a modern desktop interface for HavocGuard EDR.  
+ To improve usability and user experience.  
+ To create screen layouts for different modules.  
+ To ensure easy navigation between monitoring features.  
+ To design dashboards for real-time security monitoring.  
+ 
+Theory 
+User Interface (UI) design focuses on creating visually appealing screens that allow users to 
+interact with software efficiently, while User Experience (UX) design ensures that the 
+application is easy to understand and use. 
+ 
+For HavocGuard EDR, a modern dark-themed desktop interface was designed to provide clear 
+visualization of endpoint activities, security alerts, and system status. The interface follows a 
+modular design where each monitoring feature is placed on a dedicated screen. This approach 
+improves navigation, reduces complexity, and enables users to quickly identify security threats. 
+ 
+UI Design Modules 
+The user interface of HavocGuard EDR consists of the following screens: 
+ Dashboard  
+ Process Monitor  
+ Network Monitor  
+ File Integrity Monitor  
+ Registry Monitor  
+ Threats & Alerts  
+ AI Security Analyst  
+ Reports & Analytics  
+ Settings  
+ 
+Key UI Features 
+The interface provides: 
+ Dark theme with professional cybersecurity appearance.  
+ Left-side navigation panel for quick access.  
+ Live system monitoring widgets.  
+ Interactive charts and graphs.  
+ Threat severity indicators.  
+ Search and filtering options.  
+ AI-generated threat explanations.  
+ Report generation and export options.  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Responsive desktop layout.  
+ 
+Screen Description 
+1. Dashboard 
+Displays the overall security status of the system, including active threats, blocked threats, 
+system health, threat score, resource usage, and recent security events. 
+ 
+2. Process Monitor 
+Displays running processes along with CPU usage, memory usage, process status, and 
+suspicious process detection. 
+ 
+3. Network Monitor 
+Displays active network connections, traffic statistics, protocols, remote IP addresses, and 
+suspicious network activities. 
+ 
+4. File Integrity Monitor 
+Monitors protected files and folders for unauthorized modifications and displays integrity 
+alerts. 
+ 
+5. Registry Monitor 
+Monitors Windows Registry changes and highlights suspicious modifications affecting system 
+security. 
+6. Threats & Alerts 
+Displays detected threats, severity levels, threat scores, timestamps, and recommended 
+response actions.  
+ 
+7. AI Security Analyst 
+Provides AI-generated explanations of detected threats, security recommendations, and 
+incident summaries in a conversational format. 
+ 
+8. Reports & Analytics 
+Displays historical security reports, graphical analytics, threat statistics, and report export 
+options.  
+ 
+9. Settings 
+Allows users to configure monitoring preferences, response modes, notifications, logging 
+options, and application settings.  
+ 
+Observation 
+The designed user interface provides a simple and organized navigation system for monitoring 
+endpoint security. Each module is placed on a dedicated screen, reducing complexity and 
+allowing users to quickly access important security information. The dark theme and graphical 
+representation improve readability and provide a professional cybersecurity appearance. 
+ 
+Result 
+The UI/UX design for HavocGuard EDR was successfully prepared. Dedicated interfaces for 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+monitoring, threat detection, AI analysis, reporting, and system configuration were designed to 
+provide an intuitive and efficient user experience. 
+ 
+UI/UX Demos: 
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Experiment-6 
+Setup project environment, tools, and required dependencies. 
+Aim 
+To establish the development environment required for the implementation of HavocGuard 
+EDR by installing, configuring, and verifying the software tools, frameworks, libraries, and 
+dependencies necessary for endpoint monitoring, threat detection, Machine Learning analysis, 
+and user interface development. 
+Objectives 
+ To install and configure the software development environment. 
+ To identify and install the required tools and technologies. 
+ To configure the Python programming environment. 
+ To install libraries required for monitoring and threat analysis. 
+ To establish database and telemetry collection support. 
+ To verify the successful operation of all dependencies before development. 
+Introduction 
+Before the development of any software project begins, it is essential to establish a suitable 
+development environment. A properly configured environment ensures that all required 
+software components, libraries, and tools function correctly and work together without 
+compatibility issues. It also improves developer productivity and reduces implementation 
+challenges during later stages of development. 
+For HavocGuard EDR, the development environment must support multiple functionalities 
+such as endpoint monitoring, data processing, Machine Learning analysis, database 
+management, graphical user interface development, and AI-assisted threat analysis. Since the 
+project integrates various technologies, careful configuration of the environment is necessary 
+to ensure stable operation throughout the development lifecycle. 
+The project was developed primarily using Python due to its extensive ecosystem of 
+cybersecurity, Machine Learning, database, and GUI development libraries. Additional tools 
+were configured to support version control, telemetry collection, testing, and debugging. 
+Development Environment Overview 
+The development environment for HavocGuard EDR consists of the following major 
+components: 
+Programming Environment 
+ Python 3.x 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Development Tools 
+ Visual Studio Code (VS Code) 
+ Git 
+ GitHub 
+Database 
+ SQLite 
+User Interface Framework 
+ PySide6 
+Monitoring Technologies 
+ Psutil 
+ WMI 
+ PyWin32 
+ Watchdog 
+Machine Learning Tools 
+ Scikit-learn 
+ Pandas 
+ NumPy 
+ Joblib 
+Telemetry Collection 
+ Microsoft Sysmon 
+ Windows Event Logs 
+Importance of Environment Setup 
+A well-configured environment provides several advantages: 
+ Ensures compatibility among project components. 
+ Simplifies dependency management. 
+ Reduces development errors. 
+ Supports debugging and testing activities. 
+ Improves software reliability. 
+ Facilitates future maintenance and upgrades. 
+Without a proper environment setup, development may be interrupted by dependency conflicts, 
+missing libraries, or software compatibility issues. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Hardware Requirements 
+The following hardware configuration was identified as suitable for project development and 
+testing. 
+Component Specification 
+Processor Intel Core i5 or equivalent 
+RAM Minimum 8 GB 
+Storage 10 GB Free Space 
+Display 1366 × 768 Resolution or Higher 
+Internet Connection Required for updates and AI integration 
+The selected hardware provides sufficient resources for endpoint monitoring, Machine 
+Learning operations, and user interface development. 
+Software Requirements 
+The following software components were installed and configured. 
+Software Purpose 
+Windows 10 / Windows 11 Operating System 
+Python 3.x Programming Language 
+Visual Studio Code Code Editor 
+Git Version Control 
+GitHub Source Code Management 
+SQLite Database Management 
+Microsoft Sysmon Endpoint Telemetry Collection 
+ 
+Python Environment Configuration 
+Python serves as the primary development platform for HavocGuard EDR. 
+The following steps were performed: 
+Step 1: Install Python 
+Python was downloaded and installed from the official Python distribution. 
+Step 2: Verify Installation 
+The installation was verified through the command prompt. 
+python --version 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Successful execution confirmed that Python was correctly installed. 
+Step 3: Create Project Directory 
+A dedicated project workspace was created. 
+HavocGuard-EDR 
+This directory contains all project files, modules, datasets, documentation, and resources. 
+Installation of Required Libraries 
+Several Python libraries were installed to support project development. 
+System Monitoring Libraries 
+pip install psutil 
+pip install wmi 
+pip install pywin32 
+These libraries enable monitoring of processes, services, and Windows system activities. 
+File Monitoring Library 
+pip install watchdog 
+Watchdog is used for file integrity monitoring. 
+GUI Development Library 
+pip install PySide6 
+PySide6 provides the graphical user interface framework used for building the application 
+dashboard. 
+Database Support 
+pip install sqlite-utils 
+SQLite serves as the primary database for storing telemetry, alerts, reports, and application 
+settings. 
+Machine Learning Libraries 
+pip install scikit-learn 
+pip install pandas 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+pip install numpy 
+pip install joblib 
+These libraries support data preprocessing, anomaly detection, model training, and prediction. 
+Project Folder Structure 
+A structured project hierarchy was established to improve maintainability. 
+HavocGuard-EDR/ 
+│ 
+├── dashboard/ 
+├── monitoring/ 
+├── detection/ 
+├── ai/ 
+├── database/ 
+├── reports/ 
+├── models/ 
+├── datasets/ 
+├── logs/ 
+├── config/ 
+└── docs/ 
+The modular structure ensures separation of responsibilities and simplifies future 
+enhancements. 
+Microsoft Sysmon Configuration 
+Microsoft Sysmon was selected as the telemetry collection component for the project. 
+Sysmon provides detailed event logs regarding: 
+ Process creation 
+ Process termination 
+ Network connections 
+ Driver loading 
+ Registry modifications 
+ File creation activities 
+These events serve as valuable telemetry sources for threat detection and Machine Learning 
+analysis. 
+The Sysmon service was configured and verified before integrating it into the monitoring 
+framework. 
+Version Control Configuration 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Version control was implemented using Git and GitHub. 
+Benefits of Version Control 
+ Source code backup. 
+ Change tracking. 
+ Collaboration support. 
+ Rollback capabilities. 
+ Project history maintenance. 
+The project repository was created and synchronized with GitHub to maintain organized 
+development records. 
+Verification of Environment Setup 
+After installing all required components, verification tests were performed. 
+The following checks were completed: 
+ Python installation verified. 
+ Libraries successfully imported. 
+ Database connectivity tested. 
+ GUI framework executed successfully. 
+ Monitoring modules initialized correctly. 
+ Sysmon telemetry collected successfully. 
+ Git repository configured successfully. 
+Successful execution of these tests confirmed that the environment was ready for software 
+development. 
+Advantages of the Configured Environment 
+The configured environment provides several benefits: 
+ Stable development platform. 
+ Efficient dependency management. 
+ Support for cybersecurity monitoring. 
+ Machine Learning compatibility. 
+ Scalable project structure. 
+ Simplified testing and debugging. 
+ Faster development workflow. 
+Observation 
+The installation and configuration process successfully established a complete development 
+environment for HavocGuard EDR. All required software tools, libraries, telemetry 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+components, and development resources were installed and verified. The environment provides 
+the necessary foundation for implementing monitoring modules, threat detection mechanisms, 
+AI integration, and reporting functionality. 
+Result 
+The project environment, development tools, and required dependencies for HavocGuard 
+EDR were successfully installed and configured. The configured environment supports 
+endpoint monitoring, database management, Machine Learning analysis, GUI development, 
+and AI-assisted security operations, enabling the project to proceed to the implementation 
+phase. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Experiment-7 
+Development of Frontend Modules for the Application 
+Aim 
+To develop the frontend modules of HavocGuard EDR using a desktop GUI framework so 
+that users can monitor endpoint activities, review threats, analyze system information, and 
+interact with the application through a clear and responsive interface. 
+Objectives 
+ To convert the previously designed UI/UX layouts into functional application screens. 
+ To develop a consistent navigation structure for all modules. 
+ To create individual frontend screens for monitoring and analysis features. 
+ To display security information using tables, cards, charts, and status indicators. 
+ To provide interactive controls for user actions and configuration. 
+ To maintain a consistent visual theme across the application. 
+ To prepare the frontend for integration with backend monitoring and detection modules. 
+Introduction 
+Frontend development is the process of converting interface designs into a functional user 
+interface through which users can interact with software. In a desktop cybersecurity 
+application, the frontend plays an important role because security information must be 
+presented in a clear, organized, and easy-to-understand format. 
+For HavocGuard EDR, the frontend was developed as a Windows desktop interface using 
+PySide6. The design follows a modular approach in which each major monitoring and security 
+function is presented on a dedicated screen. This reduces interface complexity and makes it 
+easier for users to navigate between monitoring modules, alerts, reports, and settings. 
+The frontend was designed to maintain the same dark-themed cybersecurity appearance 
+established during the UI/UX design phase. It includes navigation panels, monitoring cards, 
+tables, charts, status indicators, buttons, and dialog boxes to provide a professional and 
+consistent user experience. 
+Frontend Development Approach 
+The frontend was developed by dividing the application into reusable interface components 
+rather than building each screen independently. 
+The major interface elements include: 
+ Main application window 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Sidebar navigation 
+ Header and status section 
+ Dashboard cards 
+ Monitoring tables 
+ Graph and chart areas 
+ Search and filter controls 
+ Threat severity indicators 
+ Action buttons 
+ Confirmation dialogs 
+ Settings controls 
+This component-based approach helps maintain visual consistency and simplifies future 
+changes to the interface. 
+GUI Framework Used 
+PySide6 was selected as the primary GUI framework for HavocGuard EDR. 
+PySide6 is the official Python binding for the Qt framework and provides support for 
+developing modern desktop applications. It was selected because it offers: 
+ Cross-platform GUI components. 
+ Advanced layouts and widgets. 
+ Tables and tree views. 
+ Dialog boxes. 
+ Signals and slots for event handling. 
+ Custom styling support. 
+ Integration with Python backend modules. 
+For HavocGuard EDR, PySide6 provides the flexibility required to create a desktop security 
+dashboard with multiple monitoring screens and interactive controls. 
+Main Application Layout 
+The primary application window consists of three major sections. 
+1. Navigation Panel 
+The left-side navigation panel allows users to move between application modules. 
+The navigation contains options such as: 
+ Dashboard 
+ Processes 
+ Network 
+ File Integrity 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Registry 
+ Threats & Alerts 
+ AI Security Analyst 
+ Reports & Analytics 
+ Settings 
+The currently selected module is visually highlighted so that users can easily identify their 
+current location in the application. 
+2. Header Section 
+The header section displays general application information and commonly used controls. 
+It may contain: 
+ Application title 
+ System protection status 
+ Notification indicator 
+ Response mode 
+ Settings shortcut 
+The header remains consistent across modules to provide a uniform user experience. 
+3. Main Content Area 
+The main content area changes according to the selected module. 
+It contains interface components such as: 
+ Security status cards 
+ Tables 
+ Charts 
+ Logs 
+ Threat information 
+ Monitoring statistics 
+ User controls 
+Frontend Modules Developed 
+1. Dashboard Module 
+The Dashboard acts as the main overview screen of HavocGuard EDR. 
+It provides information such as: 
+ Overall protection status 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Active threats 
+ Blocked threats 
+ Threat score 
+ Monitored processes 
+ System health 
+ Recent alerts 
+ CPU and memory usage 
+ Threat activity trends 
+This allows the user to quickly understand the current security condition of the endpoint. 
+2. Process Monitor Module 
+The Process Monitor displays information about running processes. 
+The interface provides: 
+ Process name 
+ Process ID 
+ CPU utilization 
+ Memory utilization 
+ Process path 
+ Risk level 
+ Threat score 
+ Process status 
+Search and filtering features allow users to locate specific processes quickly. 
+3. Network Monitor Module 
+The Network Monitor displays active network activity generated by endpoint processes. 
+The screen includes: 
+ Active connections 
+ Local and remote addresses 
+ Ports 
+ Protocol information 
+ Network traffic statistics 
+ Risk indicators 
+ Recently blocked connections 
+This allows users to identify suspicious or unexpected network communication. 
+4. File Integrity Monitor Module 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The File Integrity Monitor presents changes detected in monitored files and directories. 
+The frontend displays: 
+ File name 
+ File path 
+ Modification type 
+ Timestamp 
+ Integrity status 
+ Risk level 
+Users can review suspicious modifications and related alerts. 
+5. Registry Monitor Module 
+The Registry Monitor displays Windows Registry changes detected by the monitoring engine. 
+The interface includes: 
+ Registry path 
+ Modification type 
+ Process responsible 
+ Timestamp 
+ Severity 
+ Risk status 
+Critical registry modifications can be visually highlighted to make investigation easier. 
+6. Threats & Alerts Module 
+The Threats & Alerts screen is responsible for presenting security detections. 
+It displays: 
+ Alert title 
+ Severity 
+ Threat score 
+ Affected process 
+ Detection time 
+ Detection reason 
+ Current status 
+Users can select an alert to view detailed information and available response actions. 
+7. AI Security Analyst Module 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The AI Security Analyst screen provides an interface for viewing AI-generated security 
+explanations. 
+The frontend displays: 
+ Threat explanation 
+ Incident summary 
+ Recommended mitigation steps 
+ Key observations 
+ User queries and responses 
+This module simplifies complex security information for the user. 
+8. Reports & Analytics Module 
+The Reports & Analytics screen presents historical and summarized security information. 
+It includes: 
+ Threat trends 
+ Security statistics 
+ Threat category distribution 
+ Historical reports 
+ Recent incidents 
+ Export options 
+Graphs and charts help users understand security patterns over time. 
+9. Settings Module 
+The Settings module allows the user to configure application behavior. 
+Settings may include: 
+ Monitoring preferences 
+ Response mode 
+ Alert settings 
+ Logging options 
+ AI configuration 
+ Module enable/disable controls 
+Frontend Components Used 
+Component Purpose 
+Navigation Sidebar Navigation between modules 
+Cards Display summary information 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Tables Display processes, logs, and alerts 
+Charts Display security trends and analytics 
+Buttons Execute user actions 
+Search Bar Search monitored information 
+Filters Filter displayed records 
+Status Indicators Display system and threat status 
+Dialog Boxes Confirm important user actions 
+Tabs Organize related information 
+ 
+Frontend Event Handling 
+User interaction with the frontend is managed through event-based programming. 
+Examples include: 
+ Clicking a navigation button opens the selected screen. 
+ Selecting an alert displays additional information. 
+ Clicking a response action opens a confirmation dialog. 
+ Changing settings updates the selected configuration. 
+ Search and filter controls modify table results. 
+PySide6 signals and slots are used to connect interface actions with the corresponding 
+application logic. 
+Frontend and Backend Interaction 
+The frontend is designed to receive data from backend monitoring and detection modules. 
+A simplified interaction flow is: 
+Monitoring Modules 
+        ↓ 
+Backend Processing 
+        ↓ 
+SQLite Database 
+        ↓ 
+Frontend Data Retrieval 
+        ↓ 
+Tables / Charts / Alerts 
+        ↓ 
+User Interaction 
+The frontend therefore acts as the presentation layer of HavocGuard EDR, while the backend 
+performs monitoring, detection, and data processing. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Design Consistency 
+To maintain a professional appearance, all frontend modules follow a common visual style. 
+The interface uses: 
+ Dark background 
+ Consistent sidebar 
+ Uniform typography 
+ Rounded information panels 
+ Colour-coded threat severity 
+ Standardized icons 
+ Consistent spacing between components 
+Threat severity is represented visually so that users can quickly distinguish between normal 
+and suspicious events. 
+Testing of Frontend Modules 
+The frontend modules were tested for: 
+ Navigation accuracy 
+ Screen loading 
+ Button functionality 
+ Table presentation 
+ Search controls 
+ Dialog operation 
+ Layout consistency 
+ Data display 
+ Responsiveness 
+Issues identified during testing were corrected to improve interface stability and usability. 
+Advantages of the Developed Frontend 
+The developed frontend provides several advantages: 
+ Centralized endpoint security monitoring. 
+ Quick navigation between modules. 
+ Easy interpretation of security information. 
+ Clear visualization of threat severity. 
+ Simplified incident investigation. 
+ Consistent user experience. 
+ Better presentation of monitoring and analytics data. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Observation 
+The frontend development process successfully converted the UI/UX designs into structured 
+application modules. The use of reusable interface components and consistent navigation 
+improved usability and created a professional dashboard suitable for endpoint security 
+monitoring. 
+The modular frontend structure also simplifies future integration with backend monitoring 
+modules and enables additional screens or features to be introduced without redesigning the 
+entire interface. 
+Result 
+The frontend modules for HavocGuard EDR were successfully developed using PySide6. 
+Dedicated interfaces were created for endpoint monitoring, threat analysis, AI-assisted security 
+analysis, reporting, and application configuration. The developed frontend provides a 
+structured and user-friendly platform for interacting with the security system. 
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 8 
+Implement Backend Logic and Database Connectivity 
+Aim 
+To develop the backend modules of HavocGuard EDR and establish database connectivity 
+for processing endpoint telemetry, managing security events, storing monitoring data, and 
+supporting communication between the frontend interface and the underlying security 
+components. 
+Objectives 
+ To design and implement the backend architecture of the application. 
+ To establish communication between frontend and backend modules. 
+ To create database structures for storing monitoring information. 
+ To implement data processing and management logic. 
+ To manage security events, alerts, and system logs efficiently. 
+ To ensure reliable storage and retrieval of monitoring data. 
+ To provide a foundation for threat detection and AI-based analysis. 
+Introduction 
+The backend is the core processing layer of any software application. While the frontend 
+provides an interface for user interaction, the backend is responsible for handling business 
+logic, processing data, managing resources, and coordinating communication between different 
+modules. 
+For HavocGuard EDR, the backend plays a critical role because it continuously collects 
+endpoint telemetry, processes monitoring events, stores information in a database, generates 
+alerts, and provides data to the graphical dashboard. The backend acts as the central control 
+system that connects monitoring modules, threat detection engines, Machine Learning 
+components, and reporting features. 
+To support these operations, a database connectivity mechanism was implemented using 
+SQLite. The database stores collected telemetry, alert records, configuration settings, and 
+historical monitoring information. Proper backend implementation ensures data consistency, 
+efficient processing, and reliable communication between all project components. 
+Backend Architecture Overview 
+The backend architecture follows a modular design approach. 
+The major backend components include: 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1. Monitoring Engine 
+Responsible for collecting endpoint activities. 
+Monitored information includes: 
+ Running processes 
+ Services 
+ File activities 
+ Registry changes 
+ Network connections 
+ Security events 
+2. Event Processing Engine 
+Processes collected telemetry before storage. 
+Functions include: 
+ Event filtering 
+ Event categorization 
+ Severity assignment 
+ Threat scoring 
+3. Alert Management System 
+Responsible for creating and managing security alerts. 
+Functions include: 
+ Alert generation 
+ Alert storage 
+ Alert retrieval 
+ Alert prioritization 
+4. Database Layer 
+Responsible for storing application information. 
+Data stored includes: 
+ Monitoring logs 
+ Threat alerts 
+ File integrity events 
+ Registry events 
+ Network activities 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Reports 
+ Configuration settings 
+5. API and Service Layer 
+Acts as a communication bridge between frontend modules and backend services. 
+Functions include: 
+ Data retrieval 
+ Data updates 
+ Alert communication 
+ Report generation requests 
+Role of Backend in HavocGuard EDR 
+The backend performs the following responsibilities: 
+ Collect endpoint telemetry. 
+ Process monitoring events. 
+ Manage database transactions. 
+ Store historical security information. 
+ Generate threat alerts. 
+ Provide information to dashboards. 
+ Support Machine Learning modules. 
+ Maintain application configuration. 
+Without the backend layer, frontend screens would not have access to real-time security 
+information. 
+Database Selection 
+SQLite was selected as the database management system for HavocGuard EDR. 
+Reasons for Selecting SQLite 
+ Lightweight database engine. 
+ No separate server installation required. 
+ Easy integration with Python. 
+ Low resource consumption. 
+ Suitable for desktop applications. 
+ Simple deployment and maintenance. 
+SQLite provides sufficient functionality for storing endpoint monitoring information while 
+maintaining high performance for the project requirements. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Database Design 
+The database was designed to store information generated by various monitoring modules. 
+Major tables include: 
+1. Processes Table 
+Stores information related to running processes. 
+Attributes: 
+ Process ID 
+ Process Name 
+ CPU Usage 
+ Memory Usage 
+ Status 
+ Timestamp 
+2. Network Events Table 
+Stores network monitoring information. 
+Attributes: 
+ Source Address 
+ Destination Address 
+ Port Number 
+ Protocol 
+ Connection Status 
+ Timestamp 
+3. File Integrity Table 
+Stores file monitoring events. 
+Attributes: 
+ File Name 
+ File Path 
+ Event Type 
+ Hash Value 
+ Timestamp 
+4. Registry Events Table 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Stores registry modification events. 
+Attributes: 
+ Registry Path 
+ Change Type 
+ Process Name 
+ Timestamp 
+5. Alerts Table 
+Stores generated security alerts. 
+Attributes: 
+ Alert ID 
+ Threat Name 
+ Severity 
+ Threat Score 
+ Description 
+ Timestamp 
+6. Reports Table 
+Stores generated reports. 
+Attributes: 
+ Report ID 
+ Report Type 
+ Generated Date 
+ Report Location 
+Database Connectivity Implementation 
+Database connectivity was established using Python's SQLite library. 
+The connection process consists of: 
+Step 1: Create Database 
+A database file was created. 
+Example: 
+import sqlite3connection = sqlite3.connect("havocguard.db") 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Step 2: Create Cursor Object 
+cursor = connection.cursor() 
+The cursor executes database operations. 
+ 
+Step 3: Create Database Tables 
+Tables were created during application initialization. 
+Example: 
+cursor.execute("""CREATE TABLE IF NOT EXISTS alerts(    id 
+INTEGER PRIMARY KEY,    threat_name TEXT,    severity TEXT,    
+timestamp TEXT)""") 
+ 
+Step 4: Commit Changes 
+connection.commit() 
+This ensures that changes are permanently stored. 
+ 
+Backend Data Flow 
+The backend follows the workflow below: 
+Monitoring Modules 
+         ↓ 
+Telemetry Collection 
+         ↓ 
+Event Processing 
+         ↓ 
+Threat Detection 
+         ↓ 
+Database Storage 
+         ↓ 
+Frontend Retrieval 
+         ↓ 
+Dashboard Display 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+This workflow ensures smooth movement of information across all system layers. 
+ 
+Data Retrieval Operations 
+The backend provides functions for retrieving stored information. 
+Common retrieval operations include: 
+ Load active alerts. 
+ Display running processes. 
+ Fetch historical reports. 
+ Retrieve network logs. 
+ Load threat statistics. 
+ Display file integrity events. 
+The retrieved data is displayed on frontend screens through tables, charts, and dashboards. 
+ 
+Error Handling Mechanisms 
+To improve reliability, error handling was implemented. 
+Common handled scenarios include: 
+Database Connection Failure 
+The system detects unavailable database connections and displays an appropriate error 
+message. 
+Invalid Queries 
+Incorrect SQL statements are logged and handled gracefully. 
+Missing Data 
+Null values and missing records are managed without crashing the application. 
+Storage Exceptions 
+Unexpected database write failures are recorded in application logs. 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Security Considerations 
+Several security measures were considered during backend development. 
+Data Integrity 
+Database transactions ensure information consistency. 
+Controlled Access 
+Only authorized application modules interact with the database. 
+Event Logging 
+Important backend activities are logged for auditing and troubleshooting purposes. 
+Input Validation 
+User-provided information is validated before processing. 
+These measures improve reliability and protect stored monitoring data. 
+ 
+Integration with Frontend Modules 
+The backend communicates directly with frontend modules. 
+Examples include: 
+Frontend Module Backend Data Source 
+Dashboard Monitoring Statistics 
+Process Monitor Process Table 
+Network Monitor Network Events 
+File Integrity Monitor File Integrity Events 
+Registry Monitor Registry Events 
+Threats & Alerts Alert Records 
+Reports & Analytics Report Database 
+Settings Configuration Database 
+This integration enables real-time display of monitoring information. 
+ 
+Testing of Backend Components 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The backend implementation was tested through multiple scenarios. 
+Tests Performed 
+ Database connection testing. 
+ Table creation testing. 
+ Data insertion testing. 
+ Data retrieval testing. 
+ Alert generation testing. 
+ Error handling verification. 
+ Frontend-backend communication testing. 
+All major backend functions operated successfully during testing. 
+Advantages of the Implemented Backend 
+The implemented backend provides: 
+ Centralized data management. 
+ Efficient storage and retrieval. 
+ Reliable event processing. 
+ Real-time monitoring support. 
+ Simplified report generation. 
+ Easy scalability for future enhancements. 
+ Smooth integration with Machine Learning modules. 
+Observation 
+The backend implementation successfully established communication between monitoring 
+modules, databases, and frontend components. SQLite provided efficient storage for security 
+events and monitoring logs, while the modular backend architecture improved maintainability 
+and scalability. The implemented system is capable of processing endpoint telemetry and 
+supporting future threat detection and AI analysis functionalities. 
+Result 
+The backend logic and database connectivity for HavocGuard EDR were successfully 
+implemented. Database structures were created, telemetry storage mechanisms were 
+established, and reliable communication between frontend modules and backend services was 
+achieved. The developed backend provides the foundation for monitoring, threat detection, 
+reporting, and future AI-based security analysis. 
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 9 
+Integrate APIs or Third-Party Services in the Project 
+Aim 
+To integrate APIs and third-party services into HavocGuard EDR for enhancing threat 
+intelligence, telemetry collection, AI-assisted security analysis, and overall system 
+functionality. 
+Objectives 
+ To understand the role of APIs and third-party services in cybersecurity applications. 
+ To identify suitable external services for endpoint security monitoring. 
+ To integrate threat intelligence and telemetry sources with the application. 
+ To implement AI-assisted threat analysis using external services. 
+ To improve the accuracy and effectiveness of threat detection. 
+ To enable future scalability through external service integration. 
+Introduction 
+Modern cybersecurity solutions rarely operate as completely isolated systems. They often rely 
+on Application Programming Interfaces (APIs) and third-party services to access external data, 
+enhance threat detection capabilities, improve incident analysis, and provide intelligent 
+recommendations. 
+An API acts as an intermediary that allows different software applications to communicate with 
+each other. Through APIs, cybersecurity applications can retrieve threat intelligence, submit 
+suspicious indicators for analysis, obtain reputation scores, and access AI-powered services. 
+For HavocGuard EDR, integrating third-party services significantly enhances the capabilities 
+of the system by providing additional context for detected threats. External services can assist 
+in identifying malicious IP addresses, suspicious file hashes, emerging attack techniques, and 
+security best practices. AI-powered services can further help users understand complex security 
+events through automated explanations and recommendations. 
+Need for API Integration 
+The standalone monitoring capabilities of HavocGuard EDR provide visibility into endpoint 
+activities. However, additional intelligence can be obtained by connecting the application to 
+external services. 
+API integration helps the system: 
+ Improve threat detection accuracy. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Obtain external threat intelligence. 
+ Analyze suspicious indicators. 
+ Generate intelligent recommendations. 
+ Enhance incident investigation. 
+ Access continuously updated security information. 
+These capabilities improve the effectiveness of endpoint monitoring and threat analysis. 
+Third-Party Services Considered 
+Several external services were evaluated for integration with the project. 
+1. OpenAI API 
+Used for AI-assisted threat explanation and security recommendations. 
+Functions include: 
+ Threat summarization. 
+ Security incident explanation. 
+ Mitigation recommendations. 
+ User query assistance. 
+This service powers the AI Security Analyst Module within HavocGuard EDR. 
+2. VirusTotal API 
+VirusTotal provides file, URL, IP address, and domain reputation analysis. 
+Functions include: 
+ File hash verification. 
+ Malware reputation lookup. 
+ URL analysis. 
+ Domain reputation checks. 
+This helps determine whether a suspicious file or network connection has been previously 
+identified as malicious. 
+3. Microsoft Sysmon 
+Although not a traditional web API, Sysmon acts as an external telemetry provider for endpoint 
+monitoring. 
+Functions include: 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Process creation monitoring. 
+ Network activity monitoring. 
+ Registry event collection. 
+ File activity tracking. 
+Sysmon telemetry serves as an important data source for threat detection. 
+4. MITRE ATT&CK Framework 
+The MITRE ATT&CK knowledge base can be referenced to map detected threats to known 
+attack techniques. 
+Benefits include: 
+ Threat classification. 
+ Attack chain understanding. 
+ Security investigation support. 
+ Incident reporting enhancement. 
+5. Threat Intelligence Feeds 
+Future versions of HavocGuard EDR may integrate threat intelligence services providing: 
+ Malicious IP addresses. 
+ Known malicious domains. 
+ Emerging threat indicators. 
+ Security advisories. 
+These feeds can improve threat detection accuracy. 
+API Integration Architecture 
+The integration architecture consists of several interconnected layers. 
+Monitoring Modules 
+         ↓ 
+Detection Engine 
+         ↓ 
+Threat Intelligence Layer 
+         ↓ 
+External APIs 
+         ↓ 
+Analysis Results 
+         ↓ 
+Database Storage 
+         ↓ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Dashboard & AI Analyst 
+OpenAI API Integration 
+The AI Security Analyst module utilizes AI capabilities to improve threat analysis. 
+Purpose 
+The AI service is used to: 
+ Explain detected threats. 
+ Summarize security incidents. 
+ Recommend mitigation actions. 
+ Assist users in understanding alerts. 
+Workflow 
+Threat Detected 
+       ↓ 
+Alert Generated 
+       ↓ 
+Threat Information Sent 
+       ↓ 
+AI Analysis 
+       ↓ 
+Threat Explanation Generated 
+       ↓ 
+Displayed to User 
+Benefits 
+ Improved alert understanding. 
+ Reduced analysis time. 
+ Better user guidance. 
+ Simplified threat investigation. 
+VirusTotal API Integration 
+VirusTotal was considered for external threat verification. 
+Purpose 
+The service helps determine whether: 
+ A file hash is malicious. 
+ An IP address is suspicious. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ A URL is unsafe. 
+ A domain is associated with malicious activity. 
+Workflow 
+Suspicious File Detected 
+          ↓ 
+Generate File Hash 
+          ↓ 
+Send Hash to VirusTotal 
+          ↓ 
+Receive Reputation Result 
+          ↓ 
+Update Threat Score 
+          ↓ 
+Display Result 
+Benefits 
+ Improved detection accuracy. 
+ Access to global threat intelligence. 
+ Reduced false positives. 
+ Better incident investigation. 
+Sysmon Integration 
+Microsoft Sysmon serves as a telemetry collection service. 
+Telemetry Collected 
+ Process creation events. 
+ Process termination events. 
+ Network connections. 
+ Registry modifications. 
+ Driver loading events. 
+ File creation activities. 
+Benefits 
+ Detailed endpoint visibility. 
+ Improved monitoring accuracy. 
+ Rich telemetry for Machine Learning. 
+ Better threat investigation support. 
+Data Exchange Process 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The integrated services communicate with HavocGuard EDR through structured requests and 
+responses. 
+General Process 
+1. Event is detected. 
+2. Detection engine processes the event. 
+3. Relevant information is sent to an external service. 
+4. External service returns analysis results. 
+5. Results are processed. 
+6. Information is stored in the database. 
+7. User receives updated threat information. 
+This workflow ensures that external intelligence contributes directly to threat analysis. 
+Security Considerations 
+API integration introduces additional security requirements. 
+The following precautions were considered: 
+Secure API Keys 
+API credentials should never be hardcoded within source code. 
+Encrypted Communication 
+All communications should occur through secure HTTPS channels. 
+Rate Limiting 
+API requests should be managed to prevent service abuse. 
+Input Validation 
+Data sent to external services should be validated before transmission. 
+Error Handling 
+Connection failures and service interruptions should be handled gracefully. 
+These measures help protect application security and maintain reliability. 
+Advantages of API Integration 
+The integration of APIs and external services provides several benefits: 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Enhanced threat intelligence. 
+ Improved threat detection accuracy. 
+ Better incident analysis. 
+ AI-assisted recommendations. 
+ Reduced manual investigation effort. 
+ Access to continuously updated security information. 
+ Increased scalability for future enhancements. 
+Future Enhancements 
+Future API integrations may include: 
+ AbuseIPDB for malicious IP reputation. 
+ Shodan API for device intelligence. 
+ Hybrid Analysis API. 
+ AlienVault OTX. 
+ Microsoft Defender Threat Intelligence. 
+ Additional AI services for advanced analysis. 
+These integrations could further strengthen the threat detection capabilities of HavocGuard 
+EDR. 
+Observation 
+The integration of APIs and third-party services significantly improves the effectiveness of 
+HavocGuard EDR by providing external threat intelligence, telemetry data, and AI-assisted 
+analysis capabilities. Services such as OpenAI, VirusTotal, and Sysmon enhance the system's 
+ability to detect, analyze, and explain security incidents. 
+Result 
+APIs and third-party services were successfully integrated into the design of HavocGuard 
+EDR. The integration enables external threat intelligence retrieval, AI-powered threat analysis, 
+telemetry collection, and enhanced incident investigation, thereby improving the overall 
+capabilities of the endpoint detection and response system. 
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 10 
+Implement User Authentication and Security Features 
+Aim 
+To implement user authentication and security features in HavocGuard EDR to ensure 
+authorized access, protect sensitive monitoring information, and enhance the overall security 
+of the application. 
+Objectives 
+ To understand the importance of authentication in cybersecurity applications. 
+ To implement a secure login mechanism. 
+ To control user access to application resources. 
+ To protect sensitive monitoring and alert data. 
+ To implement password security mechanisms. 
+ To improve the confidentiality and integrity of application information. 
+ To strengthen the overall security posture of the system. 
+Introduction 
+Security is one of the most important requirements of any cybersecurity application. Since 
+Endpoint Detection and Response (EDR) systems handle sensitive information such as process 
+activities, network events, security alerts, and incident reports, it is essential to ensure that only 
+authorized users can access the system. 
+User authentication is the process of verifying the identity of a user before granting access to 
+application resources. Authentication mechanisms prevent unauthorized access and help 
+protect critical security information from misuse. In addition to authentication, security features 
+such as password protection, session management, access control, and audit logging further 
+enhance application security. 
+For HavocGuard EDR, authentication and security mechanisms were implemented to ensure 
+that monitoring information, threat intelligence, configuration settings, and generated reports 
+remain accessible only to authorized users. These measures improve the reliability, 
+confidentiality, and trustworthiness of the application. 
+Need for Authentication 
+Without authentication mechanisms, unauthorized individuals could gain access to security 
+information and potentially modify critical application settings. 
+Authentication is necessary because: 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Security alerts contain sensitive information. 
+ Monitoring logs should remain protected. 
+ Configuration settings should only be modified by authorized users. 
+ Threat intelligence data must be safeguarded. 
+ Reports may contain confidential system information. 
+ Unauthorized access could compromise system security. 
+Therefore, implementing authentication is essential for protecting the application and its users. 
+Authentication Module Overview 
+The authentication module was designed as the first layer of protection within HavocGuard 
+EDR. 
+The module performs the following functions: 
+ User verification. 
+ Credential validation. 
+ Login management. 
+ Session handling. 
+ Access control. 
+ Logout functionality. 
+Only authenticated users are allowed to access application modules and monitoring 
+information. 
+User Login System 
+A login screen was developed to authenticate users before granting access to the application. 
+Login Components 
+The login interface contains: 
+ Username field. 
+ Password field. 
+ Login button. 
+ Error message display. 
+ Application branding. 
+The user enters valid credentials, which are verified against stored authentication records 
+before access is granted. 
+Authentication Workflow 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The authentication process follows the workflow below: 
+User Opens Application 
+          ↓ 
+Display Login Screen 
+          ↓ 
+Enter Username & Password 
+          ↓ 
+Validate Credentials 
+          ↓ 
+Credentials Correct? 
+     ↙           ↘    Yes            No 
+    ↓              ↓ 
+Grant Access   Display Error 
+    ↓ 
+Load Dashboard 
+Password Security 
+Passwords represent the primary authentication factor and therefore require adequate 
+protection. 
+The following security measures were considered: 
+Password Masking 
+Passwords entered by users are hidden during input to prevent shoulder surfing attacks. 
+Strong Password Policy 
+Users are encouraged to use: 
+ Uppercase letters. 
+ Lowercase letters. 
+ Numbers. 
+ Special characters. 
+ Sufficient password length. 
+Password Validation 
+The application validates password strength before accepting new credentials. 
+These measures reduce the likelihood of weak password usage. 
+User Roles and Access Control 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Access control mechanisms were introduced to regulate user permissions. 
+Administrator Role 
+Administrators have permission to: 
+ View all monitoring data. 
+ Access reports. 
+ Configure monitoring modules. 
+ Manage system settings. 
+ Review alerts. 
+Standard User Role 
+Standard users can: 
+ View monitoring information. 
+ Review alerts. 
+ Generate reports. 
+However, access to critical configuration settings may be restricted. 
+Role-based access improves application security and prevents unauthorized modifications. 
+Session Management 
+After successful authentication, a user session is created. 
+Session management provides: 
+ User identification. 
+ Access tracking. 
+ Secure logout functionality. 
+ Session timeout handling. 
+The session remains active until the user logs out or the application is closed. 
+Database Support for Authentication 
+User credentials and authentication information are stored within the application database. 
+A typical user table contains: 
+Field Description 
+User ID Unique user identifier 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Username Login username 
+Password Hash Encrypted password 
+Role User role 
+Status Active/Inactive 
+Last Login Recent login timestamp 
+The database provides centralized storage and management of authentication information. 
+Security Features Implemented 
+In addition to authentication, several security features were incorporated into the application. 
+1. Access Control 
+Unauthorized users cannot access protected modules. 
+Protected resources include: 
+ Monitoring data. 
+ Security alerts. 
+ Configuration settings. 
+ Reports. 
+2. Audit Logging 
+Important user actions are recorded. 
+Examples include: 
+ Successful logins. 
+ Failed login attempts. 
+ Configuration changes. 
+ Report generation. 
+ User logout events. 
+Audit logs improve accountability and support security investigations. 
+3. Input Validation 
+User inputs are validated before processing. 
+Validation helps prevent: 
+ Invalid data entries. 
+ Application crashes. 
+ Malicious input attempts. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4. Secure Database Access 
+Database operations are performed through controlled application functions. 
+This minimizes the risk of unauthorized database modifications. 
+5. Error Handling 
+Authentication failures are handled securely. 
+Examples: 
+ Invalid username messages. 
+ Incorrect password notifications. 
+ Database connection errors. 
+Sensitive information is not disclosed through error messages. 
+Security Architecture 
+The authentication and security architecture can be represented as follows: 
+User 
+  ↓ 
+Login Interface 
+  ↓ 
+Credential Validation 
+  ↓ 
+Authentication Module 
+  ↓ 
+Role Verification 
+  ↓ 
+Access Control Layer 
+  ↓ 
+Application Modules 
+  ↓ 
+Database 
+Frontend and Backend Integration 
+The authentication module interacts with both frontend and backend components. 
+Frontend Responsibilities 
+ Display login screen. 
+ Capture user credentials. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Show authentication messages. 
+Backend Responsibilities 
+ Verify credentials. 
+ Manage user sessions. 
+ Enforce access control. 
+ Store audit logs. 
+This integration ensures secure user access throughout the application. 
+Testing of Authentication Features 
+Several tests were conducted to verify authentication functionality. 
+Tests Performed 
+ Valid login testing. 
+ Invalid login testing. 
+ Password validation testing. 
+ Session management testing. 
+ Logout functionality testing. 
+ Access control testing. 
+ Role-based permission testing. 
+All tests were successfully completed, confirming the reliability of the authentication system. 
+Advantages of Authentication and Security Features 
+The implemented security mechanisms provide several benefits: 
+ Protection of sensitive monitoring data. 
+ Prevention of unauthorized access. 
+ Improved accountability through audit logs. 
+ Enhanced application reliability. 
+ Better user management. 
+ Increased trust in the system. 
+ Compliance with secure software development practices. 
+Observation 
+The implementation of user authentication and security features significantly improved the 
+protection of HavocGuard EDR. Authentication mechanisms ensured that only authorized 
+users could access monitoring information, while access control, audit logging, and session 
+management enhanced overall system security. These measures contributed to the 
+confidentiality, integrity, and reliability of the application. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Result 
+User authentication and security features were successfully implemented in HavocGuard 
+EDR. The system now supports secure login, credential validation, session management, 
+access control, and audit logging. These features provide effective protection for monitoring 
+data, security alerts, and application resources while ensuring that only authorized users can 
+access the system. 
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 11 
+Perform CRUD Operations in the Application 
+Aim 
+To implement and test CRUD (Create, Read, Update, Delete) operations within HavocGuard 
+EDR for managing monitoring records, security alerts, configuration settings, and application 
+data stored in the database. 
+Objectives 
+ To understand the concept of CRUD operations. 
+ To implement Create, Read, Update, and Delete functionalities. 
+ To establish interaction between the frontend, backend, and database. 
+ To manage monitoring records efficiently. 
+ To enable modification and maintenance of stored information. 
+ To ensure data consistency and integrity. 
+ To verify proper database communication within the application. 
+Introduction 
+CRUD operations form the foundation of most database-driven applications. CRUD stands for 
+Create, Read, Update, and Delete, representing the four basic operations that can be 
+performed on stored data. 
+In cybersecurity applications such as HavocGuard EDR, large amounts of information are 
+continuously generated and stored. This includes security alerts, process information, file 
+integrity events, registry modifications, monitoring configurations, and reports. Managing this 
+information effectively requires a reliable CRUD implementation. 
+The CRUD functionality allows the system to add new records, retrieve existing information, 
+update stored data when changes occur, and remove unnecessary or outdated records. These 
+operations ensure that the application database remains organized, accurate, and useful for 
+security monitoring and analysis. 
+Overview of CRUD Operations 
+The four CRUD operations performed within HavocGuard EDR are: 
+Operation Description 
+Create Add new records to the database 
+Read Retrieve existing records 
+Update Modify existing records 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Delete Remove records from the database 
+These operations support various modules within the application and ensure smooth data 
+management. 
+Need for CRUD Operations 
+The application continuously generates monitoring information that must be managed 
+efficiently. 
+CRUD functionality is required to: 
+ Store security alerts. 
+ Maintain monitoring logs. 
+ Manage configuration settings. 
+ Update threat statuses. 
+ Remove outdated records. 
+ Generate reports from stored data. 
+ Maintain database consistency. 
+Without CRUD operations, it would be difficult to manage the large volume of security-related 
+information generated by the system. 
+Database Tables Used 
+Several database tables were utilized during CRUD implementation. 
+Alerts Table 
+Stores detected security alerts. 
+Fields: 
+ Alert ID 
+ Threat Name 
+ Severity 
+ Status 
+ Timestamp 
+Process Table 
+Stores monitored process information. 
+Fields: 
+ Process ID 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Process Name 
+ CPU Usage 
+ Memory Usage 
+ Status 
+Network Events Table 
+Stores network monitoring records. 
+Fields: 
+ Connection ID 
+ Source IP 
+ Destination IP 
+ Port 
+ Protocol 
+Configuration Table 
+Stores application settings. 
+Fields: 
+ Setting ID 
+ Setting Name 
+ Value 
+Create Operation 
+The Create operation is responsible for inserting new records into the database. 
+Purpose 
+Used when: 
+ New threats are detected. 
+ Monitoring events are generated. 
+ New settings are created. 
+ Reports are generated. 
+Example Workflow 
+New Event Detected 
+        ↓ 
+Create Record 
+        ↓ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Insert into Database 
+        ↓ 
+Store Successfully 
+Example SQL Query 
+INSERT INTO alerts 
+(threat_name, severity, status) 
+VALUES 
+('Suspicious Process', 'High', 'Active'); 
+Benefits 
+ Maintains historical data. 
+ Stores monitoring information. 
+ Preserves threat records. 
+Read Operation 
+The Read operation retrieves information from the database. 
+Purpose 
+Used when: 
+ Displaying alerts. 
+ Loading dashboard information. 
+ Generating reports. 
+ Viewing monitoring logs. 
+Example Workflow 
+User Opens Dashboard 
+          ↓ 
+Request Data 
+          ↓ 
+Database Query 
+          ↓ 
+Display Results 
+Example SQL Query 
+SELECT * FROM alerts; 
+Benefits 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Provides real-time visibility. 
+ Displays monitoring information. 
+ Supports reporting and analytics. 
+Update Operation 
+The Update operation modifies existing records. 
+Purpose 
+Used when: 
+ Threat status changes. 
+ Configuration settings are updated. 
+ Monitoring parameters are modified. 
+ Alert severity changes. 
+Example Workflow 
+User Modifies Setting 
+          ↓ 
+Update Request 
+          ↓ 
+Database Update 
+          ↓ 
+Save Changes 
+Example SQL Query 
+UPDATE alerts 
+SET status = 'Resolved' 
+WHERE alert_id = 1; 
+Benefits 
+ Keeps records current. 
+ Reflects latest threat status. 
+ Maintains accurate information. 
+Delete Operation 
+The Delete operation removes records from the database. 
+Purpose 
+Used when: 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Clearing old alerts. 
+ Removing obsolete logs. 
+ Deleting generated reports. 
+ Resetting monitoring history. 
+Example Workflow 
+Select Record 
+       ↓ 
+Delete Request 
+       ↓ 
+Remove from Database 
+       ↓ 
+Confirmation Message 
+Example SQL Query 
+DELETE FROM alerts 
+WHERE alert_id = 1; 
+Benefits 
+ Reduces database size. 
+ Removes unnecessary records. 
+ Improves storage efficiency. 
+Implementation in HavocGuard EDR 
+CRUD operations were integrated into several application modules. 
+Dashboard Module 
+Supported Operations: 
+ Read monitoring statistics. 
+ Read threat summaries. 
+Threats & Alerts Module 
+Supported Operations: 
+ Create new alerts. 
+ Read alert information. 
+ Update alert status. 
+ Delete resolved alerts. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+File Integrity Module 
+Supported Operations: 
+ Create monitoring records. 
+ Read file events. 
+ Delete outdated records. 
+Registry Monitor Module 
+Supported Operations: 
+ Create registry events. 
+ Read modification history. 
+Settings Module 
+Supported Operations: 
+ Create configuration entries. 
+ Read configuration values. 
+ Update settings. 
+ Delete obsolete configurations. 
+Frontend Integration 
+CRUD operations are performed through the user interface. 
+Examples include: 
+Create 
+ Add monitoring rules. 
+ Create custom alerts. 
+Read 
+ View alerts. 
+ Display reports. 
+ Load dashboard statistics. 
+Update 
+ Modify settings. 
+ Change alert status. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Delete 
+ Remove old records. 
+ Clear monitoring logs. 
+The frontend communicates with backend services to execute these operations. 
+Backend Processing Flow 
+The backend handles all CRUD requests before interacting with the database. 
+Frontend Request 
+        ↓ 
+Backend Validation 
+        ↓ 
+Database Operation 
+        ↓ 
+Result Processing 
+        ↓ 
+Frontend Response 
+This approach improves security and prevents direct database manipulation from the user 
+interface. 
+Error Handling During CRUD Operations 
+Several validation mechanisms were implemented. 
+Duplicate Record Prevention 
+The system checks for duplicate entries before inserting records. 
+Invalid Data Validation 
+User input is validated before processing. 
+Database Error Handling 
+Connection failures and query errors are logged. 
+Confirmation Dialogs 
+Delete operations require user confirmation to prevent accidental data loss. 
+These safeguards improve reliability and data integrity. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Testing of CRUD Operations 
+The implemented CRUD functionality was tested using various scenarios. 
+Test Cases Performed 
+ Insert new alert. 
+ Retrieve alert list. 
+ Update alert status. 
+ Delete alert record. 
+ Modify application settings. 
+ Retrieve monitoring logs. 
+ Validate database consistency. 
+All CRUD operations executed successfully and produced the expected results. 
+Advantages of CRUD Implementation 
+The implemented CRUD functionality provides several benefits: 
+ Efficient data management. 
+ Simplified record maintenance. 
+ Better database organization. 
+ Improved monitoring history management. 
+ Reliable storage and retrieval. 
+ Enhanced application usability. 
+ Support for reporting and analytics. 
+Observation 
+The implementation of CRUD operations successfully enabled efficient management of 
+application data. The Create, Read, Update, and Delete functionalities allowed users and 
+system modules to interact with stored information in a structured manner. Proper validation 
+and error handling mechanisms ensured data integrity and reliability throughout the 
+application. 
+Result 
+CRUD operations were successfully implemented in HavocGuard EDR. The application can 
+now create, retrieve, update, and delete monitoring records, alerts, reports, and configuration 
+settings through integrated frontend, backend, and database components. The implemented 
+functionality ensures efficient management of security-related information and supports the 
+overall operation of the system. 
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+EXPERIMENT – 12 
+Conduct Unit Testing and Debugging of Project Modules 
+Aim 
+To perform unit testing and debugging of the individual modules of HavocGuard EDR in 
+order to verify functionality, identify defects, improve reliability, and ensure the correct 
+operation of the application before deployment. 
+Objectives 
+ To understand the importance of software testing in application development. 
+ To perform unit testing on individual modules of the project. 
+ To identify and resolve errors through debugging. 
+ To verify the correctness of module outputs. 
+ To improve software stability and reliability. 
+ To ensure smooth integration among system components. 
+ To validate that the developed modules meet project requirements. 
+Introduction 
+Software testing is a critical phase of the Software Development Life Cycle (SDLC). It is 
+performed to ensure that developed software behaves as expected and satisfies specified 
+requirements. Testing helps identify defects, inconsistencies, and unexpected behaviors before 
+the application is released for practical use. 
+Among different testing techniques, Unit Testing is one of the most fundamental methods. 
+Unit testing focuses on verifying the functionality of individual software modules 
+independently. Each module is tested in isolation to ensure that it performs its intended function 
+correctly. 
+In addition to testing, Debugging is performed to locate and correct errors found during 
+development and testing. Debugging helps developers identify the root cause of problems and 
+implement appropriate solutions. 
+For HavocGuard EDR, unit testing and debugging were conducted on various modules 
+including monitoring components, database operations, threat detection mechanisms, AI 
+integration features, and frontend functionalities. This process improved application reliability 
+and ensured stable operation of all major system components. 
+Need for Testing and Debugging 
+Testing and debugging are essential because software systems often contain logical, runtime, 
+or integration-related errors during development. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Testing helps to: 
+ Verify functional correctness. 
+ Improve software quality. 
+ Detect defects early. 
+ Reduce system failures. 
+ Increase user confidence. 
+ Ensure requirement compliance. 
+Debugging helps to: 
+ Locate software defects. 
+ Correct implementation errors. 
+ Improve code quality. 
+ Enhance maintainability. 
+ Increase application stability. 
+Without proper testing and debugging, security applications may produce inaccurate results or 
+fail during critical operations. 
+Testing Strategy Adopted 
+The testing strategy for HavocGuard EDR involved verifying each module independently 
+before performing integration testing. 
+The major phases included: 
+Phase 1 – Module Testing 
+Each module was tested individually. 
+Phase 2 – Error Identification 
+Detected issues were documented. 
+Phase 3 – Debugging 
+Root causes were identified and corrected. 
+Phase 4 – Retesting 
+Corrected modules were tested again. 
+Phase 5 – Validation 
+Final verification ensured expected behavior. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Modules Selected for Unit Testing 
+The following modules were tested independently. 
+Module Purpose 
+Dashboard Module Display security statistics 
+Process Monitor Monitor running processes 
+Network Monitor Monitor active connections 
+File Integrity Monitor Detect file modifications 
+Registry Monitor Track registry changes 
+Threat Detection Engine Generate threat alerts 
+Database Module Manage data storage 
+AI Security Analyst Generate security explanations 
+Settings Module Manage application configuration 
+ 
+Unit Testing of Dashboard Module 
+Objective 
+To verify that security statistics and monitoring information are displayed correctly. 
+Test Cases 
+ Dashboard loads successfully. 
+ Security cards display correct values. 
+ Recent alerts are displayed properly. 
+ Charts update dynamically. 
+Expected Result 
+Dashboard components should load without errors and display accurate information. 
+Actual Result 
+All dashboard elements loaded successfully and displayed expected data. 
+Unit Testing of Process Monitor Module 
+Objective 
+To verify process monitoring functionality. 
+Test Cases 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Detect running processes. 
+ Display process information. 
+ Refresh process list. 
+ Search for specific processes. 
+Expected Result 
+The module should retrieve and display active processes accurately. 
+Actual Result 
+The process monitoring module successfully displayed process details and updated information 
+correctly. 
+Unit Testing of Network Monitor Module 
+Objective 
+To verify network monitoring operations. 
+Test Cases 
+ Display active connections. 
+ Show local and remote IP addresses. 
+ Monitor port activity. 
+ Refresh connection list. 
+Expected Result 
+Network connections should be displayed correctly. 
+Actual Result 
+The module successfully retrieved and displayed active network connections. 
+Unit Testing of File Integrity Monitor 
+Objective 
+To verify detection of file modifications. 
+Test Cases 
+ Detect file creation. 
+ Detect file modification. 
+ Detect file deletion. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Generate monitoring records. 
+Expected Result 
+File system changes should be detected accurately. 
+Actual Result 
+The module successfully identified file events and recorded them in the database. 
+Unit Testing of Registry Monitor 
+Objective 
+To verify registry monitoring functionality. 
+Test Cases 
+ Detect registry changes. 
+ Record modified registry keys. 
+ Display change history. 
+Expected Result 
+Registry events should be captured and stored correctly. 
+Actual Result 
+The module successfully detected registry modifications and generated corresponding records. 
+Unit Testing of Database Module 
+Objective 
+To verify database connectivity and data management. 
+Test Cases 
+ Create records. 
+ Retrieve records. 
+ Update records. 
+ Delete records. 
+Expected Result 
+Database operations should execute successfully. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Actual Result 
+All CRUD operations executed correctly without data inconsistencies. 
+Unit Testing of Threat Detection Module 
+Objective 
+To verify alert generation and threat scoring mechanisms. 
+Test Cases 
+ Detect suspicious activity. 
+ Generate alerts. 
+ Assign severity levels. 
+ Calculate threat scores. 
+Expected Result 
+Threats should generate appropriate alerts. 
+Actual Result 
+The module successfully generated alerts and assigned threat levels correctly. 
+Unit Testing of AI Security Analyst Module 
+Objective 
+To verify AI-assisted threat analysis functionality. 
+Test Cases 
+ Generate threat explanations. 
+ Produce mitigation recommendations. 
+ Handle user security queries. 
+Expected Result 
+The module should provide meaningful security explanations. 
+Actual Result 
+The AI module successfully generated explanations and recommendations based on security 
+events. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Debugging Process 
+After testing, identified issues were analyzed using debugging techniques. 
+The debugging process followed the workflow below: 
+Execute Module 
+       ↓ 
+Identify Error 
+       ↓ 
+Analyze Cause 
+       ↓ 
+Modify Code 
+       ↓ 
+Retest Module 
+       ↓ 
+Verify Solution 
+Common Issues Identified 
+During development, several common issues were encountered. 
+Database Connectivity Errors 
+Cause: 
+ Incorrect database path. 
+ Missing database file. 
+Solution: 
+ Correct database configuration. 
+ Verify connection parameters. 
+GUI Loading Issues 
+Cause: 
+ Incorrect widget initialization. 
+Solution: 
+ Update UI component initialization logic. 
+Missing Monitoring Records 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Cause: 
+ Event processing delays. 
+Solution: 
+ Improve monitoring synchronization mechanisms. 
+API Communication Errors 
+Cause: 
+ Invalid API configuration. 
+Solution: 
+ Verify API credentials and request handling. 
+Data Display Errors 
+Cause: 
+ Incorrect database queries. 
+Solution: 
+ Modify retrieval logic and query statements. 
+Testing Tools Used 
+The following tools assisted the testing process: 
+Tool Purpose 
+Python Debugger Code debugging 
+VS Code Debugger Runtime analysis 
+SQLite Browser Database verification 
+Logging Module Error tracking 
+PySide6 Testing GUI validation 
+These tools improved error identification and troubleshooting efficiency. 
+Sample Test Case Table 
+Test Case ID Module Input Expected Output Result  
+TC-01 Login Valid Credentials Access Granted Pass 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+TC-02 Dashboard Load Screen Statistics Displayed Pass 
+TC-03 Database Insert Record Record Stored Pass 
+TC-04 Process Monitor Retrieve Processes Process List Displayed Pass 
+TC-05 Alert System Suspicious Event Alert Generated Pass 
+ 
+Benefits of Unit Testing 
+Unit testing provided several advantages: 
+ Early defect detection. 
+ Improved code quality. 
+ Easier debugging. 
+ Reduced development risk. 
+ Improved software reliability. 
+ Better maintainability. 
+ Increased confidence during deployment. 
+Benefits of Debugging 
+Debugging improved: 
+ Application stability. 
+ Performance. 
+ Code quality. 
+ Error handling. 
+ User experience. 
+ System reliability. 
+Observation 
+Unit testing successfully verified the functionality of all major HavocGuard EDR modules. 
+Several minor implementation issues were identified during testing and resolved through 
+systematic debugging. Retesting confirmed that the corrected modules operated according to 
+project requirements. The testing process improved software quality, reliability, and overall 
+system performance. 
+Result 
+Unit testing and debugging of the HavocGuard EDR project modules were successfully 
+conducted. All major modules were tested independently, identified issues were resolved, and 
+corrected functionalities were verified through retesting. The application demonstrated stable 
+and reliable operation after the completion of testing and debugging activities. 
+EXPERIMENT – 13 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Optimize Application Performance and Improve User Experience 
+Aim 
+To optimize the performance of HavocGuard EDR and improve the overall user experience 
+by enhancing system responsiveness, reducing resource consumption, improving interface 
+usability, and ensuring smooth operation under various monitoring conditions. 
+Objectives 
+ To identify performance bottlenecks within the application. 
+ To optimize CPU, memory, and database usage. 
+ To improve application responsiveness. 
+ To enhance user interface usability and accessibility. 
+ To reduce system latency during monitoring operations. 
+ To improve dashboard loading and data visualization performance. 
+ To provide a better overall user experience. 
+Introduction 
+Performance optimization and user experience enhancement are important phases in software 
+development. Even if an application provides all required functionalities, users may face 
+difficulties if the software is slow, consumes excessive system resources, or presents 
+information in a confusing manner. 
+In cybersecurity applications such as HavocGuard EDR, performance is especially critical 
+because monitoring modules operate continuously in the background while simultaneously 
+collecting telemetry, generating alerts, storing records, and updating dashboards. Poor 
+optimization can lead to increased CPU usage, excessive memory consumption, delayed threat 
+detection, and reduced user satisfaction. 
+User Experience (UX) focuses on how users interact with the application. A well-designed user 
+experience ensures that information is easy to understand, navigation is intuitive, and important 
+security events are clearly presented. 
+This experiment focuses on improving the performance and usability of HavocGuard EDR 
+through optimization techniques, interface enhancements, and efficient resource management. 
+Need for Performance Optimization 
+Endpoint monitoring applications continuously process large amounts of data. 
+Without optimization, the application may experience: 
+ Slow dashboard loading. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ High CPU utilization. 
+ Excessive memory consumption. 
+ Delayed alert generation. 
+ Reduced responsiveness. 
+ Database performance issues. 
+ Poor user experience. 
+Optimization helps ensure that the application remains efficient even when monitoring large 
+numbers of processes, files, network connections, and security events. 
+Performance Analysis 
+The performance of HavocGuard EDR was evaluated by observing system behavior during 
+execution. 
+The following aspects were analyzed: 
+CPU Usage 
+Monitoring modules were evaluated to ensure they did not consume excessive processor 
+resources. 
+Memory Consumption 
+Memory utilization was monitored to identify unnecessary allocations and leaks. 
+Database Performance 
+Database operations were reviewed to reduce query execution time. 
+Dashboard Responsiveness 
+The loading speed of charts, tables, and monitoring information was evaluated. 
+Alert Generation Speed 
+The time required to generate and display alerts was analyzed. 
+Performance Bottlenecks Identified 
+Several areas requiring optimization were identified. 
+Frequent Database Access 
+Continuous database queries increased response time. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Large Monitoring Data 
+High volumes of telemetry data affected dashboard performance. 
+Repeated UI Refreshes 
+Excessive screen updates increased resource usage. 
+Unoptimized Data Processing 
+Processing all monitoring events simultaneously reduced efficiency. 
+Background Monitoring Overhead 
+Continuous monitoring activities increased CPU utilization. 
+Optimization Techniques Implemented 
+Several optimization techniques were introduced to improve performance. 
+1. Efficient Database Operations 
+Database interactions were optimized by reducing unnecessary queries. 
+Improvements 
+ Reduced duplicate database requests. 
+ Improved query structure. 
+ Retrieved only required data. 
+ Optimized data storage operations. 
+Benefits 
+ Faster database access. 
+ Reduced response time. 
+ Improved dashboard performance. 
+2. Background Processing 
+Monitoring tasks were moved to background threads. 
+Purpose 
+Allows monitoring activities to run independently of the user interface. 
+Benefits 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Smooth UI performance. 
+ Improved responsiveness. 
+ Reduced interface freezing. 
+3. Optimized Dashboard Loading 
+The dashboard was redesigned to load information efficiently. 
+Improvements 
+ Lazy loading of data. 
+ Incremental updates. 
+ Optimized chart rendering. 
+ Reduced unnecessary refresh operations. 
+Benefits 
+ Faster dashboard startup. 
+ Improved user interaction. 
+ Better visual performance. 
+4. Data Caching 
+Frequently accessed information was temporarily stored in memory. 
+Cached Data 
+ Recent alerts. 
+ Dashboard statistics. 
+ Monitoring summaries. 
+ Configuration settings. 
+Benefits 
+ Reduced database access. 
+ Faster information retrieval. 
+ Improved application speed. 
+5. Resource Management 
+The application was optimized to use system resources efficiently. 
+Improvements 
+ Released unused objects. 
+ Closed unnecessary database connections. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Reduced memory allocations. 
+ Improved process handling. 
+Benefits 
+ Lower memory usage. 
+ Reduced CPU utilization. 
+ Improved system stability. 
+User Experience Improvements 
+In addition to performance optimization, several usability improvements were implemented. 
+1. Improved Navigation 
+The sidebar navigation was refined for easier access to application modules. 
+Features 
+ Clear labels. 
+ Organized menu structure. 
+ Consistent navigation placement. 
+Benefits 
+ Faster module access. 
+ Reduced learning curve. 
+2. Enhanced Dashboard Design 
+The dashboard was improved to provide better visibility of security information. 
+Features 
+ Security status cards. 
+ Alert summaries. 
+ Threat statistics. 
+ Real-time monitoring indicators. 
+Benefits 
+ Quick security overview. 
+ Better decision-making support. 
+3. Colour-Coded Threat Levels 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Threat severity levels were visually categorized. 
+Severity Representation 
+Critical Highest Priority 
+High Immediate Attention 
+Medium Moderate Risk 
+Low Minimal Risk 
+Benefits 
+ Faster threat identification. 
+ Improved situational awareness. 
+4. Search and Filter Functionality 
+Search and filtering options were added to monitoring modules. 
+Supported Modules 
+ Process Monitor 
+ Network Monitor 
+ Alerts Module 
+ Reports Module 
+Benefits 
+ Faster information retrieval. 
+ Improved user productivity. 
+5. User Feedback Mechanisms 
+The application provides feedback for user actions. 
+Examples include: 
+ Success messages. 
+ Warning notifications. 
+ Error dialogs. 
+ Confirmation prompts. 
+These features help users understand the outcome of their actions. 
+Application Workflow Optimization 
+The optimized workflow can be represented as follows: 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Monitoring Modules 
+         ↓ 
+Background Processing 
+         ↓ 
+Event Analysis 
+         ↓ 
+Database Storage 
+         ↓ 
+Cached Data Layer 
+         ↓ 
+Dashboard Display 
+         ↓ 
+User Interaction 
+Application Workflow Optimization 
+The optimized workflow can be represented as follows: 
+Monitoring Modules 
+         ↓ 
+Background Processing 
+         ↓ 
+Event Analysis 
+         ↓ 
+Database Storage 
+         ↓ 
+Cached Data Layer 
+         ↓ 
+Dashboard Display 
+         ↓ 
+User Interaction 
+Performance Testing 
+Performance testing was conducted after optimization. 
+Parameters Tested 
+ Dashboard loading time. 
+ Database response time. 
+ Alert generation speed. 
+ Memory utilization. 
+ CPU utilization. 
+ User interface responsiveness. 
+Results 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Faster dashboard loading. 
+ Improved database performance. 
+ Reduced memory consumption. 
+ Better responsiveness. 
+ Stable monitoring operations. 
+Comparison Before and After Optimization 
+Parameter Before Optimization After Optimization 
+Dashboard Loading Moderate Faster 
+Database Access Frequent Optimized 
+UI Responsiveness Average Improved 
+Memory Usage Higher Reduced 
+CPU Utilization Higher Optimized 
+User Experience Good Better 
+Benefits of Performance Optimization 
+The optimization process provided several advantages. 
+Technical Benefits 
+ Reduced CPU consumption. 
+ Lower memory utilization. 
+ Faster database access. 
+ Improved scalability. 
+ Better system stability. 
+User Benefits 
+ Faster navigation. 
+ Improved responsiveness. 
+ Easier monitoring. 
+ Better visualization. 
+ Enhanced usability. 
+Future Enhancements 
+Additional optimizations may include: 
+ Advanced caching mechanisms. 
+ Cloud-based telemetry processing. 
+ Real-time analytics engine. 
+ Multi-threaded event processing. 
+ Predictive performance monitoring. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Advanced dashboard customization. 
+These enhancements can further improve application efficiency and user satisfaction. 
+Observation 
+The optimization process significantly improved the performance and usability of HavocGuard 
+EDR. Database operations became more efficient, monitoring modules consumed fewer 
+resources, and dashboard responsiveness improved noticeably. User experience enhancements 
+such as improved navigation, threat visualization, and search functionality made the application 
+easier to use and more effective for security monitoring tasks. 
+Result 
+The performance of HavocGuard EDR was successfully optimized, and several user 
+experience improvements were implemented. Resource utilization was reduced, dashboard 
+responsiveness was enhanced, and overall application usability was improved. The optimized 
+system provides efficient endpoint monitoring while maintaining a user-friendly and 
+professional interface. 
+ 
+ 

@@ -1,0 +1,33 @@
+# Local secrets and machine settings
+config/.env
+.env
+.env.*
+!.env.example
+
+# Local databases, telemetry and runtime state
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+*.log
+logs/
+
+# Python environments and caches
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local build output and packaged binaries
+build/
+HavocGuard.dist/
+release/*.exe
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+desktop.ini
+
+# Local diagnostics
+nuitka-crash-report.xml

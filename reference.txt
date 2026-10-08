@@ -1,0 +1,1660 @@
+ATMIYA UNIVERSITY
+RAJKOT
+A
+Report On
+QuantTrade – AI Trading Operating System
+Under subject of
+MINI PROJECT
+B.TECH, Semester – VII
+(Computer Engineering)
+Submitted by:
+1.  Krish Gondaliya 230002048
+2.  Om Bhalodiya 230002007
+Prof. Parth Chavda
+(Faculty Guide)
+Dr. Tosal M. Bhalodia
+(Head of the Department)
+Academic Year
+(2025-26)
+
+CANDIDATE’S DECLARATION
+We hereby declare that the work presented in this project entitled “ QuantTrade – AI Trading  
+Operating  System”  submitted  towards  completion  of  project  in  7th  Semester of  B.  Tech.  
+(Computer Engineering) is an authentic record of our original work carried out under the guidance 
+of “Prof. Parth Chavda”.
+We have not submitted the matter embodied in this project for the award of any other degree.
+Semester: 7th
+Place: Rajkot
+Signature:
+Krish Gondaliya (230002048)
+Om Bhalodiya (230002007)
+2
+
+ATMIYA UNIVERSITY
+RAJKOT
+CERTIFICATE
+Date:
+This is to certify that the “QuantTrade – AI Trading Operating System” has been 
+carried out by Krish Gondaliya under my guidance in fulfillment of the subject Mini 
+Project in COMPUTER ENGINEERING (7th Semester) of Atmiya University,  
+Rajkot during the academic year 2025-26.
+Prof. Parth Chavda Dr. Tosal M. Bhalodia
+(Project Guide) (Head of the Department)
+3
+
+ATMIYA UNIVERSITY
+RAJKOT
+CERTIFICATE
+Date:
+This is to certify that the “QuantTrade – AI Trading Operating System” has been 
+carried out by Om Bhalodiya under my guidance in fulfillment of the subject Mini  
+Project in COMPUTER ENGINEERING (7th Semester) of Atmiya University,  
+Rajkot during the academic year 2025-26.
+Prof. Parth Chavda Dr. Tosal M. Bhalodia
+(Project Guide) (Head of the Department)
+4
+
+ACKNOWLEDGEMENT
+We have taken many efforts in this project. However, it would not have been possible without the 
+kind support and help of many individuals and organizations. We would like to extend our sincere 
+thanks to all of them.
+We are highly indebted to Prof. Parth Chavda for their guidance and constant supervision as well 
+as for providing necessary information regarding the Project titled “QuantTrade – AI Trading  
+Operating System” . We would like to express our gratitude towards staff members of the  
+Computer  Engineering  Department,  Atmiya  University  for  their  kind  co-operation  and  
+encouragement which helped us in completion of this project.
+We also thank the maintainers of the open-source projects on which QuantTrade is built, and  
+everyone who willingly helped us with their abilities.
+Krish Gondaliya (230002048)
+Om Bhalodiya (230002007)
+5
+
+ABSTRACT
+Retail traders, Python strategy authors and small trading teams usually depend on a fragmented set 
+of tools – separate charting websites, notebooks for backtesting, exchange web terminals for order 
+entry and bots for alerts. Many of these tools are hosted by third parties, which forces users to hand 
+over their exchange API keys and proprietary strategy code, and none of them gives AI assistants a 
+safe, controlled way to take part in the trading workflow.
+QuantTrade is an open-source, self-hosted AI Trading Operating System that turns trading ideas 
+into Python strategies and carries them through backtesting, paper (signal) trading, live execution  
+and monitoring inside a single Docker-based stack owned by the user. The backend is built with  
+Python 3.12, Flask and Gunicorn, uses PostgreSQL 18 for durable state, Redis 8 for caching and job 
+queues, Celery for background jobs and Apache Kafka for strategy events. A Vue.js web client and 
+a mobile H5 client provide AI market research, an indicator IDE, a Strategy API V2 editor, a  
+Backtest Center, strategy deployment, Quick Trade and portfolio monitoring.
+Live orders are routed through native adapters for six crypto exchanges (Binance, OKX, Bitget,  
+Bybit, Gate, HTX) and two brokers (Interactive Brokers and Alpaca). Exchange keys are encrypted 
+at  rest,  users  are  protected  by  bcrypt  passwords,  JWT  sessions  and  TOTP  multi-factor  
+authentication, and every live entry can pass through an AI decision filter. AI agents connect  
+through a scoped Agent Gateway and a Model Context Protocol (MCP) server that is paper-only by 
+default. The backend test suite of 3,346 automated unit tests passed successfully, and the complete 
+system is deployed with Docker Compose.
+6
+
+INDEX
+Sr.
+No. TITLES Page
+No.
+Candidate’s Declaration 2
+Certificate 3
+Acknowledgement 5
+Abstract 6
+List of Figures 10
+List of Tables 11
+1. Introduction 13
+1.1 Purpose 13
+1.2 Scope 13
+1.3 Technology and Tools 14
+1.4 Problem Statement 15
+1.5 Objectives 15
+1.6 Organisation of the Report 16
+2. Project Management 17
+2.1 Project Planning 17
+2.2 Project Scheduling 18
+2.3 Risk Management 19
+2.3.1 Risk Identification : 19
+2.3.2 Risk Analysis : 20
+3. System Requirements Study 22
+3.1 Hardware and Software Requirements 22
+3.1.1 Server-side Hardware Requirement : 22
+3.1.2 Software Requirement : 22
+3.1.3 Client-side Requirement : 22
+3.1.4 Python Libraries Used : 23
+3.1.5 Services and Network Ports : 23
+3.1.6 Supported Markets : 24
+3.2 Constraints 24
+3.2.1 Hardware Limitation : 24
+3.2.2 Reliability Requirements : 24
+3.2.3 Safety and Security Consideration : 24
+3.2.4 Regulatory and Legal Constraints : 25
+3.2.5 Network Constraints : 25
+4. System Analysis 26
+7
+
+Sr.
+No. TITLES Page
+No.
+4.1 Study of Current System 26
+4.2 Problem and Weaknesses of Current System 26
+4.3 Requirements of New System 27
+4.3.1 User Requirements : 27
+4.3.2 System Requirements : 27
+4.3.3 Functional Requirement Specification : 28
+4.4 Feasibility Study 29
+4.5 Features of New System 30
+5. System Design 31
+5.1 Input / Output Interface 31
+5.2 Interface Design 34
+5.2.1 Class Diagram : 34
+5.2.2 Use Case Diagram : 36
+5.2.3 Activity Diagram : 37
+5.2.4 Data Flow Diagram : 38
+5.2.5 State Diagram : 39
+5.2.6 E-R Diagram : 40
+5.2.7 Sequence Diagram : 41
+5.3 Database Design 41
+5.4 API Design 45
+5.5 Security Design 46
+5.6 Deployment Design 47
+6. Code Implementation 49
+6.1 Implementation Environment 49
+6.2 Program / Module Specification 49
+6.2.1 Strategy API V2 : 51
+6.2.2 Credential Encryption : 52
+6.2.3 Exchange Adapter Factory : 52
+6.2.4 CRUD Operations : 53
+6.2.5 Background Jobs : 53
+6.3 Coding Standards 53
+6.3.1 Comment Standards : 54
+6.4 Deployment and Configuration 54
+6.5 Version Control 55
+7. Testing 56
+7.1 Testing Strategy 56
+8
+
+Sr.
+No. TITLES Page
+No.
+7.2 Testing Method 56
+7.2.1 Unit Testing : 56
+7.2.2 Integration Testing : 57
+7.2.3 Validation Testing : 57
+7.3 Test Cases 58
+7.3.1 Test Suite : 58
+7.3.2 Module-wise Test Cases : 58
+7.4 Test Results Summary 60
+7.5 Debugging and Defects Fixed 60
+8. Limitations and Future Enhancement 61
+8.1 Limitations 61
+8.2 Future Enhancement 61
+9. Conclusion 62
+10. References 63
+9
+
+LIST OF FIGURES
+Fig.
+No. Figure Title Page
+No.
+2.1 Project Schedule (Gantt Chart) 18
+5.1 Sign-In Screen (Desktop and Tablet) 31
+5.2 Portfolio Dashboard 31
+5.3 Strategy IDE (Split-Pane Editor) 32
+5.4 Live Trading and Risk Check 32
+5.5 Agent Gateway (MCP Log) 33
+5.6 QuantTrade System Architecture 33
+5.7 Class Diagram of QuantTrade 34
+5.8 Use Case Diagram 36
+5.9 Activity Diagram – Strategy from Idea to Live Trading 37
+5.10 Context Diagram (Level-0 DFD) 38
+5.11 Level-1 Data Flow Diagram 39
+5.12 Strategy Deployment State Diagram 39
+5.13 Entity Relationship Diagram 40
+5.14 Sequence Diagram – Starting a Live Strategy and Placing an Order 41
+5.15 Login, Lockout and MFA Flow 46
+5.16 AI Pre-Trade Decision Flow 47
+5.17 Docker Compose Deployment Diagram 48
+5.18 Third-Party Integrations 48
+5.19 Performance Design – Caching, Pooling and Asynchronous Jobs 48
+7.1 Unit Test Execution (Security and Transaction Modules) 57
+7.2 Full Unit Test Suite and Lint Result 57
+10
+
+LIST OF TABLES
+Table
+No. Table Title Page
+No.
+2.1 Project Phases and Deliverables 17
+2.2 Team Roles and Responsibilities 18
+2.3 Week-wise Project Schedule 19
+2.4 Risk Analysis and Mitigation 21
+3.1 Server-side Hardware Requirement 22
+3.2 Software Requirement 22
+3.3 Client-side Requirement 22
+3.4 Python Libraries Used 23
+3.5 Services and Default Ports 23
+3.6 Supported Markets for Live Trading 24
+4.1 Comparison of Existing Approaches with QuantTrade 26
+4.2 Functional Requirement Specification 29
+4.3 Feasibility Summary 30
+4.4 Selected Technologies and Justification 30
+5.1 Data Dictionary – qd_users 42
+5.2 Data Dictionary – qd_exchange_credentials 42
+5.3 Data Dictionary – qd_strategies_trading 43
+5.4 Data Dictionary – pending_orders 43
+5.5 Data Dictionary – qd_strategy_trades 44
+5.6 Data Dictionary – qd_backtest_runs 44
+5.7 Data Dictionary – qd_manual_positions 44
+5.8 Data Dictionary – qd_agent_tokens 45
+5.9 Important API Endpoints 46
+5.10 Agent Token Scopes 47
+6.1 Runtime Processes (Containers) 49
+6.2 Module Specification 50
+6.3 Strategy Lifecycle Handlers 51
+6.4 Order Functions 51
+6.5 Important Environment Variables 55
+7.1 Testing Tools 56
+7.2 Test Suite 58
+7.3 Test Cases – Login and Registration 58
+11
+
+Table
+No. Table Title Page
+No.
+7.4 Test Cases – Strategy and Backtest 59
+7.5 Test Cases – Portfolio and Credentials 59
+7.6 Test Cases – Agent Gateway and AI 59
+7.7 Test Results Summary 60
+7.8 Defects Found and Fixed 60
+12
+
+CHAPTER – 1
+INTRODUCTION
+1.1 Purpose
+- The  purpose  of  the  project  entitled  “ QuantTrade  –  AI  Trading  
+Operating System” is to build a self-hosted, AI-augmented quantitative  
+trading  platform  that  unifies  market  research,  strategy  development,  
+backtesting, paper trading, live execution and monitoring in one system  
+that runs on the user’s own hardware.
+- Today  traders  and  quantitative  researchers  stitch  together  many  
+disconnected  tools  and  expose  sensitive  exchange  credentials  and  
+proprietary strategy code to third-party cloud services. QuantTrade keeps  
+algorithms and credentials under the operator’s control.
+- The project also provides a safe, standardised way for AI agents (Cursor,  
+Claude Code, Codex and others) to participate in the trading workflow  
+through the Model Context Protocol (MCP), with paper-only defaults and 
+strict risk guardrails.
+1.2 Scope
+- Multi-market data: Crypto, US stocks, HK stocks, CN A-shares, Forex,  
+Futures and MOEX with canonical symbol identifiers.
+- AI market research with multiple LLM providers, exportable PDF reports 
+and an AI chat copilot.
+- Python indicator IDE and Strategy API V2 editor with AI generation,  
+validation and version history.
+- Server-side Backtest Center with performance and benchmark metrics,  
+and strategy evolution (parameter optimisation).
+- Signal (paper) and live deployment across Binance, OKX, Bitget, Bybit,  
+Gate, HTX, Interactive Brokers and Alpaca.
+- Quick Trade with an AI pre-trade decision filter, portfolio monitoring,  
+price alerts and multi-channel notifications.
+- Agent Gateway and MCP server for AI agents; authentication with MFA  
+and role-based access control.
+- Out of scope: high-frequency co-located trading, custody of user funds and 
+investment advice.
+13
+
+1.3 Technology and Tools
+Front End technology used in the application :
+▪ Vue.js :-
+- Vue.js is a progressive JavaScript framework for building single-page  
+applications (SPA).
+- QuantTrade’s  web  client  is  a  Vue.js  SPA  with  a  component-based  
+structure and left-side navigation between modules.
+- Ant Design Vue provides ready-made UI components such as tables,  
+forms, dialogs and metric cards.
+▪ KLineCharts & ECharts :-
+- KLineCharts renders real-time candlestick (K-line) charts with indicator  
+overlays and trade markers.
+- ECharts  renders  equity  curves,  drawdown  charts,  heat-maps  and  
+dashboard visualisations.
+▪ Nginx & Capacitor :-
+- Nginx serves the built web (port 8888) and mobile H5 (port 8889) clients  
+and proxies API calls to the backend.
+- Capacitor packages the mobile H5 client as a native mobile application.
+Back End technology used in the application :
+▪ Python 3.12, Flask & Gunicorn :-
+- Python is the main backend language because of its rich data-science and  
+trading ecosystem (pandas, NumPy, TA-Lib).
+- Flask 3.1 with flask-smorest implements the REST API and generates  
+OpenAPI documentation.
+- Gunicorn  serves  the  Flask  application  in  production  using  threaded  
+(gthread) workers.
+▪ PostgreSQL 18 & Redis 8 :-
+- PostgreSQL  stores  all  durable  data:  users,  strategies,  orders,  trades,  
+backtests and audit logs (100+ tables).
+- Redis  is  used  as  a  disposable  cache  (allkeys-lru)  and,  as  a  separate  
+instance, as the durable Celery job broker (AOF, noeviction).
+▪ Celery & Apache Kafka :-
+- Celery runs finite background jobs such as backtests, AI analysis and  
+reports.
+- Kafka is the event backbone that distributes closed-bar events to sharded  
+strategy evaluator workers.
+14
+
+▪ Docker & Docker Compose :-
+- All services run as containers orchestrated by Docker Compose v2, giving 
+the same environment on Linux, macOS and Windows (WSL2).
+▪ AI integration :-
+- LLM providers: OpenRouter, OpenAI-compatible APIs, Google Gemini,  
+DeepSeek, Grok, MiniMax and LiteLLM.
+- Model Context Protocol (MCP) server for AI agents; TypeSafe JEV for  
+typed pre-trade decisions.
+1.4 Problem Statement
+Traders  and  quantitative  researchers  today  are  forced  to  stitch  together  
+multiple disconnected tools for market research, strategy backtesting, paper trading  
+and live order execution. Many of these tools depend on external cloud platforms,  
+exposing  sensitive  exchange  credentials  and  proprietary  strategy  code  to  third  
+parties, and they offer no standardised way for AI agents to safely participate in the  
+trading workflow.
+Most existing platforms also lack strict execution guardrails, so it is easy to  
+accidentally deploy an untested strategy with real capital, or to send duplicate orders 
+when a network request is retried. Positions spread across several exchanges and  
+brokers must be tracked manually, and there is no single place to see the complete  
+portfolio.
+Therefore,  there  is  a  need  to  develop  a  self-hosted  quantitative  trading  
+platform capable of:
+- Ingesting and processing multi-asset market data locally.
+- Writing strategies once and running the same code in backtest, paper and  
+live modes.
+- Simulating realistic paper trading before capital is risked.
+- Routing live orders securely and exactly once across multiple exchanges  
+and brokers.
+- Allowing AI agents to safely generate, test and adjust strategies through  
+MCP.
+1.5 Objectives
+The objectives of QuantTrade are:
+1. Ingest  and  normalise  multi-asset  market  data  with  canonical  symbol  
+identifiers.
+15
+
+2. Support  AI-driven  market  research  and  strategy  generation  through  
+multiple LLM providers and MCP.
+3. Provide  a  Strategy  API  V2  programming  model  whose  code  runs  
+unchanged in backtest and live runtime.
+4. Provide a Backtest Center with realistic fees and slippage and robust  
+parameter evolution.
+5. Simulate fills, positions and PnL in signal-only virtual accounts before  
+going live.
+6. Route market and limit orders to six crypto exchanges and two brokers  
+with idempotent, durable order handling.
+7. Keep paper trading as the default, with explicit confirmation and AI/risk  
+checks before live entries.
+8. Aggregate positions, alerts and notifications across venues in one portfolio 
+view.
+9. Protect users with encrypted credentials, hashed passwords, MFA and  
+role-based access control.
+10. Maintain audit logs for every AI-agent interaction and pre-trade decision.
+11. Provide  a  responsive,  dark-mode  web  dashboard  and  mobile  client,  
+deployable with a single command.
+1.6 Organisation of the Report
+The remainder of this report is organised as follows. Chapter 2 describes  
+project planning, scheduling and risk management. Chapter 3 lists the hardware,  
+software and other requirements and constraints. Chapter 4 analyses the current  
+approach, the requirements of the new system and its feasibility. Chapter 5 presents  
+the system design, including screens, UML diagrams, data flow diagrams, database  
+design, API design, security design and deployment design. Chapter 6 explains the  
+implementation environment, important modules and coding standards. Chapter 7  
+describes the testing strategy, test cases and results. Chapter 8 discusses limitations  
+and future enhancements, Chapter 9 concludes the report and Chapter 10 lists the  
+references.
+16
+
+CHAPTER – 2
+PROJECT MANAGEMENT
+2.1 Project Planning
+Project planning is the stage of the project management life cycle in which the 
+team decides what will be built, how it will be built and in which order. For  
+QuantTrade,  planning  followed  the  fifteen  laboratory  experiments  of  the  Mini  
+Project  course,  starting  from  problem  identification  and  requirement  analysis,  
+through design and implementation, and ending with testing, documentation and  
+deployment. An iterative waterfall model was followed: each phase produced a  
+reviewed  deliverable  (problem  statement,  SRS,  design  diagrams,  modules,  test  
+report) before the next phase began, while feedback from the guide allowed earlier  
+artefacts to be revised.
+Phase Activities Deliverable
+Analysis Problem statement, objectives, requirement 
+gathering, feasibility study
+Problem statement, SRS 
+document
+Design System architecture, workflow, UI/UX 
+wireframes, database design
+Architecture, DFD, ER and 
+UI designs
+Setup Development tools, Python libraries, Docker 
+services
+Working development 
+environment
+Implementation Frontend modules, backend and database, 
+API integration, security, CRUD
+Working application 
+modules
+Testing Unit testing, debugging, integration and 
+validation testing Test cases and test report
+Optimisation Caching, asynchronous jobs, UX 
+improvements Tuned application
+Delivery Documentation, report, presentation, 
+deployment and viva Report, deployed system
+Table 2.1 Project Phases and Deliverables
+Software Process Model :
+The  iterative waterfall model  was selected for QuantTrade. The classical  
+waterfall  model  completes  each  phase  –  requirements,  design,  implementation, 
+testing and deployment – before the next phase begins, which suits an academic  
+project with fixed weekly reviews and clearly defined deliverables. The iterative  
+variant adds feedback paths: when an issue was found during implementation or  
+testing (for example, the need for idempotency keys to prevent duplicate orders), the 
+design and requirement documents were updated before work continued.
+17
+
+This model was preferred over a pure agile approach because the course  
+required formal artefacts (SRS, design diagrams, test report) at defined points, and  
+over a pure waterfall model because trading systems often reveal new requirements  
+once real exchange APIs are integrated.
+Team Roles and Responsibilities :
+Role Responsibilities
+Project Guide Weekly review of progress, approval of SRS and design, evaluation
+Krish Gondaliya Requirement analysis, backend services, database design, exchange 
+integration, testing
+Om Bhalodiya UI/UX design, frontend modules, documentation, deployment, 
+presentation
+Both Members Security features, CRUD operations, test cases, report preparation
+Table 2.2 Team Roles and Responsibilities
+2.2 Project Scheduling
+Scheduling converts the plan into a timeline. Each experiment of the lab  
+manual was treated as a task with an estimated duration and a dependency on earlier 
+tasks. The schedule below was followed during the semester, with a weekly review  
+by the project guide.
+Fig. 2.1 Project Schedule (Gantt Chart)
+The week-wise schedule of activities is given below. Each week ended with a 
+short review of the completed experiment with the project guide.
+18
+
+Week Activity (Experiment) Outcome
+1 Identify problem statement and objectives (Exp. 1) Problem statement approved
+2 Requirement gathering and feasibility analysis (Exp. 
+2)
+Requirement list, feasibility 
+report
+3 Software Requirement Specification (Exp. 3) SRS document
+4 System architecture and workflow diagrams (Exp. 4) Architecture and workflow 
+diagrams
+5 UI/UX wireframes and screen design (Exp. 5) Screen designs
+6 Environment, tools and dependencies (Exp. 6) Working Docker 
+environment
+7–8 Frontend modules (Exp. 7) Dashboard, IDE, backtest, 
+trading screens
+8–9 Backend logic and database connectivity (Exp. 8) Flask services, PostgreSQL 
+schema
+9–10 API and third-party integration (Exp. 9) Exchange, LLM, 
+notification integration
+10 Authentication and security (Exp. 10) JWT, MFA, encryption, 
+RBAC
+11 CRUD operations (Exp. 11) CRUD APIs tested
+12–13 Unit testing and debugging (Exp. 12) Test suite passing
+13 Performance and UX optimisation (Exp. 13) Caching, async jobs, UX 
+fixes
+14–15 Documentation, report and presentation (Exp. 14) Report and slides
+16 Deployment and viva (Exp. 15) Deployed system, viva
+Table 2.3 Week-wise Project Schedule
+2.3 Risk Management
+Risk management consists of a series of steps that help the development team 
+to understand and manage uncertain problems that may arise during development.  
+Because QuantTrade can place real orders with real money, risk management covers 
+both project risks and product (trading) risks.
+2.3.1 Risk Identification :
+Risk identification is the first systematic attempt to specify risks to the project 
+plan, schedule, resources and development. It was carried out as a team using a  
+brainstorming approach.
+Technology Risks :
+Technical  risks  concern  implementation,  design,  interfacing,  testing  and  
+maintenance problems.
+19
+
+- Exchange API changes or outages breaking order routing.
+- Duplicate or lost orders caused by network retries.
+- Database corruption or loss of queued jobs.
+- Malicious or faulty user strategy code.
+People Risks :
+These risks concern the team members who take part in developing the system.
+- Leaking API keys or passwords.
+- Lack of knowledge of trading concepts and distributed systems.
+- Poor communication between team members.
+Tools Risks :
+These are concerned with the tools used to develop the system.
+- Vulnerable third-party dependencies.
+- Incompatible versions of Python, Docker or database images.
+General Risks :
+General risks are concerned with resources, requirements and the trading  
+domain.
+- Rapidly changing requirements.
+- Insufficient planning and task identification.
+- Financial loss if an untested strategy is deployed live.
+- Regulatory and compliance differences between jurisdictions.
+2.3.2 Risk Analysis :
+“Risk analysis = risk assessment + risk management + risk communication.”  
+The identified risks were analysed for probability and impact, and a mitigation was  
+planned for each.
+Risk Probability Impact Mitigation
+Duplicate live orders 
+on retry Medium High Idempotency keys with unique indexes on 
+commands and orders
+Two workers running 
+one strategy Low High Leases, heartbeats and fencing tokens
+API key theft Low High Fernet encryption at rest, masked hints, 
+restricted keys
+Untested strategy goes 
+live Medium High Deployments start stopped; signal mode 
+first; live confirmation
+AI provider outage Medium Medium Fail-open for entries with logging; exits 
+bypass AI
+20
+
+Risk Probability Impact Mitigation
+Queued jobs lost Low Medium Separate job Redis with AOF and 
+noeviction; backups
+Malicious strategy code Medium High Sandbox with restricted builtins and 
+CPU/memory limits
+Schedule slippage Medium Medium Weekly reviews against the Gantt chart
+Table 2.4 Risk Analysis and Mitigation
+Risk communication :
+- All identified risks were listed and reviewed with the project guide.
+- A  risk  disclaimer  is  shown  in  the  application  and  documentation:  
+QuantTrade does not provide investment advice and trading may lose  
+capital.
+21
+
+CHAPTER – 3
+SYSTEM REQUIREMENTS STUDY
+3.1 Hardware and Software Requirements
+This section shows the minimum requirements to run the system efficiently.
+3.1.1 Server-side Hardware Requirement :
+Devices Description
+Processor 4 vCPU (x86-64 or ARM64) or more
+RAM 8 GB or more
+Hard Disk 40 GB SSD or more
+Network Broadband Internet for exchange and data 
+APIs
+Table 3.1 Server-side Hardware Requirement
+3.1.2 Software Requirement :
+For Which Software*
+Operating System Linux, macOS, Windows 10/11 (WSL2)
+Container Platform Docker Engine & Docker Compose v2
+Front End Vue.js, Ant Design Vue, KLineCharts, 
+ECharts
+Back End Python 3.12, Flask 3.1, Gunicorn, Celery
+Database PostgreSQL 18, Redis 8
+Messaging Apache Kafka 4.3
+Code Editor Visual Studio Code
+Version Control Git & GitHub
+Table 3.2 Software Requirement
+3.1.3 Client-side Requirement :
+For Which Requirement*
+Desktop Latest Chrome, Edge, Firefox or Safari
+Mobile Android / iOS browser (H5) or Capacitor app
+AI agent (optional) MCP client such as Cursor, Claude Code or 
+Codex
+Table 3.3 Client-side Requirement
+* Minimum Requirements and Software for uses
+22
+
+3.1.4 Python Libraries Used :
+The main Python libraries used by the backend (from requirements.txt) 
+are listed below.
+Library Purpose
+Flask 3.1, flask-cors, flask-smorest Web framework, CORS handling, OpenAPI 
+generation
+gunicorn Production WSGI server
+psycopg2-binary PostgreSQL driver and connection pool
+redis, celery Cache client, background job queue
+confluent-kafka Kafka producer/consumer for strategy events
+pandas, numpy, TA-Lib Data processing and technical indicators
+exchange-calendars Trading sessions and holidays for equity markets
+yfinance, finnhub-python, akshare Market, fundamental and news data
+ib_insync, alpaca-py Interactive Brokers and Alpaca integration
+litellm Unified access to multiple LLM providers
+PyJWT, bcrypt, cryptography, pyotp, 
+qrcode
+JWT, password hashing, Fernet encryption, TOTP 
+MFA
+prometheus-client Runtime metrics
+reportlab, pypdf PDF export of AI analysis reports
+pytest, ruff, bandit, pip-audit Testing, linting and security scanning (development)
+Table 3.4 Python Libraries Used
+3.1.5 Services and Network Ports :
+Service Default Address Purpose
+Web client 127.0.0.1:8888 Desktop web application and API 
+proxy
+Mobile H5 127.0.0.1:8889 Mobile web application
+Backend API 127.0.0.1:5000 REST API and health endpoints
+Grafana 127.0.0.1:3000 Dashboards (optional)
+Prometheus 127.0.0.1:9090 Metrics (optional)
+Alertmanager 127.0.0.1:9093 Alerts (optional)
+PostgreSQL / Redis / 
+Kafka internal network only Data and messaging; never published
+Table 3.5 Services and Default Ports
+23
+
+3.1.6 Supported Markets :
+Market Live Venues Key Limit
+Crypto Binance, Bitget, Bybit, OKX, 
+Gate, HTX
+Spot and swap depend on 
+venue and account
+Exchange tokenized 
+equities OKX, Bybit, Bitget Long-only; regional 
+availability
+Exchange equity 
+perpetuals
+Binance, OKX, Bitget, Bybit, 
+Gate
+Derivative exposure; exact 
+contract rules
+US stocks Alpaca, IBKR Long-only broker strategies
+HK / CN stocks, Forex, 
+Futures Data and backtest only No live venue in this release
+Table 3.6 Supported Markets for Live Trading
+3.2 Constraints
+3.2.1 Hardware Limitation :
+- The full stack runs about fifteen containers; hosts with less than 8 GB  
+RAM may need to run without the optional monitoring overlay.
+- Insufficient disk space can stop PostgreSQL or the job Redis and halt  
+trading workers.
+- For Interactive Brokers, the TWS / IB Gateway must run on a machine  
+reachable by the server.
+3.2.2 Reliability Requirements :
+Since many strategies and users can be active at the same time, the system  
+must never lose or duplicate an order. Commands and orders are stored durably in  
+PostgreSQL with idempotency keys, strategy ownership is protected by leases and  
+heartbeats, and failed jobs are retried a bounded number of times. Workers publish  
+heartbeats and alerts are raised within two minutes if a required worker is missing.
+Reliability  also  depends  on  validation.  All  API  inputs  are  validated  by  
+schemas; if a request violates a validation rule the user receives a clear error message 
+and the record is not saved until it is corrected.
+3.2.3 Safety and Security Consideration :
+- Exchange credentials and MFA secrets are encrypted with Fernet using a  
+dedicated CREDENTIAL_ENCRYPTION_KEY.
+- Passwords are hashed with bcrypt; sessions use HS256 JWTs with token  
+versioning.
+24
+
+- Production containers run as a non-root user with a read-only filesystem;  
+databases are never exposed publicly.
+- AI agents are paper-only unless three independent switches allow live  
+trading.
+- Rejected AI decisions never reach the exchange; exits and emergency  
+stops are never blocked.
+3.2.4 Regulatory and Legal Constraints :
+- QuantTrade is intended for lawful research, education and compliant  
+trading only; it does not provide investment advice.
+- Operators must follow the licensing, tax, exchange and data rules of their  
+jurisdiction.
+- Exchange terms of service and API rate limits must be respected.
+- The  QuantDinger  name  and  logo  are  trademarks  of  their  owner;  the 
+academic product is therefore re-branded as QuantTrade while keeping the 
+Apache 2.0 licence notice.
+3.2.5 Network Constraints :
+- Live trading needs stable Internet access; WebSocket streams improve  
+latency but REST reconciliation is the recovery path after disconnects.
+- Some exchanges require the server IP to be whitelisted on the API key;  
+QuantTrade publishes its egress IP for this purpose.
+- Restricted  networks  can  use  HTTP/SOCKS  proxies  for  outbound  
+connections.
+25
+
+CHAPTER – 4
+SYSTEM ANALYSIS
+4.1 Study of Current System
+In the current situation a trader uses several separate tools: a charting website 
+to study the market, a notebook or desktop program to backtest ideas, the exchange’s 
+web terminal to place orders, a spreadsheet to track positions across exchanges, and a 
+messaging bot to receive alerts. Cloud-based trading bots are available, but they  
+require the user to upload exchange API keys and strategy logic to the provider’s  
+servers.
+AI assistants are increasingly used to write trading code, but there is no  
+standard and safe way for them to read market data, run a backtest or place a paper  
+trade.  Users  copy  code  manually  between  the  AI  tool,  the  backtester  and  the  
+exchange, which is slow and error-prone.
+The table below compares the usual approaches with the proposed system.
+Feature Charting / Notebook 
+Tools
+Cloud Trading 
+Bots QuantTrade
+Self-hosted, keys stay local Partly No Yes
+Same code for backtest and 
+live No Limited Yes (Strategy API V2)
+Paper trading before live Limited Yes Yes (signal mode)
+Multiple exchanges and 
+brokers No Crypto only Crypto + IBKR + 
+Alpaca
+AI research and code 
+generation No Limited Yes (multi-LLM)
+Safe AI-agent access (MCP) No No Yes, scoped and 
+audited
+Duplicate-order protection Not applicable Unknown Idempotency keys + 
+leases
+Open source Varies Usually no Yes (Apache 2.0 
+backend)
+Table 4.1 Comparison of Existing Approaches with QuantTrade
+4.2 Problem and Weaknesses of Current System
+- Fragmented workflow across many disconnected tools.
+- Sensitive API keys and proprietary strategy code exposed to third parties.
+- No common strategy format between backtest and live trading, so results  
+differ.
+26
+
+- No execution guardrails – an untested strategy can easily be deployed with 
+real capital.
+- Duplicate orders and inconsistent positions when networks or exchanges  
+fail.
+- No safe, audited interface for AI agents.
+- Manual portfolio tracking across exchanges is time-consuming and error-
+prone.
+4.3 Requirements of New System
+4.3.1 User Requirements :
+Users require a single, fast and secure platform where they can research a  
+market with AI, write and validate a strategy, backtest it with realistic costs, run it in 
+paper mode, deploy it live with risk controls, and monitor all positions and alerts –  
+while keeping their keys and code on their own hardware.
+4.3.2 System Requirements :
+▪ Functional System Requirement :
+- Register, log in with password, e-mail code or OAuth, and enable TOTP  
+MFA.
+- Run AI market analysis and export reports as PDF.
+- Create, validate, version and AI-generate indicators and Strategy API V2  
+code.
+- Run backtests and parameter evolution with metrics (return, drawdown,  
+Sharpe ratio, win rate, Information Ratio).
+- Create deployments in signal or live mode and start/stop them through  
+durable commands.
+- Route orders to six crypto exchanges, Interactive Brokers and Alpaca and 
+reconcile fills.
+- Gate live entries with an AI decision filter; provide a kill switch.
+- Manage portfolio positions, monitors, alerts and notifications.
+- Expose a scoped, rate-limited and audited Agent Gateway and MCP  
+server.
+- Administer users, roles, credentials and system settings.
+▪ Non-Functional System Requirements :
+i. EFFICIENCY REQUIREMENT :
+Synchronous API requests should complete with p95 latency below 2  
+seconds;  long  operations  run  asynchronously  and  return  a  job  ID  
+immediately.
+27
+
+ii. RELIABILITY REQUIREMENT :
+Orders  and  commands  must  be  durable  and  idempotent;  strategy  
+ownership must be exclusive; the API error rate should remain below 5%.
+iii. USABILITY REQUIREMENT :
+The  web  application  provides  a  dark,  chart-centric,  bilingual  
+(English/Chinese) interface with templates and clear validation messages.
+iv. SECURITY REQUIREMENT :
+Encrypted credentials, hashed passwords and tokens, MFA, role-based  
+access control and non-root hardened containers.
+v. IMPLEMENTATION REQUIREMENT :
+Implementation using Vue.js in the front end and Python/Flask with  
+PostgreSQL, Redis, Celery and Kafka in the back end, packaged with  
+Docker Compose.
+vi. DELIVERY REQUIREMENT :
+The whole system is expected to be delivered within the academic  
+semester with a weekly evaluation by the project guide.
+4.3.3 Functional Requirement Specification :
+The main functional requirements are numbered for traceability during testing.
+ID Requirement Priority
+FR-1 The system shall authenticate users by password, e-mail code or OAuth and 
+support TOTP MFA. High
+FR-2 The system shall hash passwords with bcrypt and issue HS256 JWTs valid for 
+7 days. High
+FR-3 The system shall lock an account after 5 failed logins for 30 minutes. High
+FR-4 The system shall run AI market analysis asynchronously and export PDF 
+reports. Medium
+FR-5 The system shall create, validate, version and restore indicators and strategy 
+sources. High
+FR-6 The system shall run backtests with configurable capital, commission and 
+slippage. High
+FR-7 The system shall compute return, drawdown, Sharpe ratio, win rate and 
+benchmark metrics. High
+FR-8 The system shall create deployments in the stopped state in signal or live 
+mode. High
+FR-9 The system shall process start/stop requests as durable commands with 
+idempotency keys. High
+FR-10 The system shall route live orders through native exchange and broker 
+adapters. High
+28
+
+ID Requirement Priority
+FR-11 The system shall gate live entries with the AI decision filter and never block 
+exits. High
+FR-12 The system shall manage manual positions, monitors and price alerts. Medium
+FR-13 The system shall send notifications by Telegram, e-mail, SMS and webhooks. Medium
+FR-14 The system shall expose a scoped, rate-limited and audited Agent Gateway. High
+FR-15 The system shall allow administrators to manage users, roles and settings. High
+Table 4.2 Functional Requirement Specification
+4.4 Feasibility Study
+The feasibility study analyses the proposed system to decide whether it will be 
+viable after implementation.
+Technical Feasibility :
+The  project  is  technically  feasible  using  Python  3.12,  Flask,  Vue.js,  
+PostgreSQL 18, Redis 8, Celery, Kafka and Docker, all of which are mature open-
+source technologies with good documentation. The required exchange and broker  
+APIs are publicly documented and offer test/demo environments.
+Operational Feasibility :
+The  system  provides  a  dark-mode  web  dashboard  and  mobile  client  for 
+monitoring strategies, viewing backtests and managing live execution. Safe defaults 
+(stopped deployments, signal mode, paper-only agents) make it practical for users  
+with different experience levels.
+Economic Feasibility :
+All components are open source and the platform is self-hosted on existing  
+hardware or a low-cost cloud VM, so the project is cost-effective and suitable for  
+academic implementation. Optional paid services (LLM API usage) are billed per  
+use.
+Schedule Feasibility :
+The project can be completed within the semester by following the schedule in 
+Fig. 2.1.
+Type Key Question Result
+Technical Can it be built with available technology 
+and skills?
+Feasible – mature open-source 
+stack
+Operational Will users be able to use it safely? Feasible – safe defaults and 
+clear UI
+Economic Is the cost acceptable? Feasible – open source, self-
+hosted
+29
+
+Type Key Question Result
+Schedule Can it be completed in the semester? Feasible – 16-week plan
+Table 4.3 Feasibility Summary
+4.5 Features of New System
+- One self-hosted platform for research, coding, backtesting, paper and live 
+trading, and monitoring.
+- Same Strategy API V2 code runs in backtest and in live runtime.
+- Native adapters for Binance, OKX, Bitget, Bybit, Gate, HTX, IBKR and  
+Alpaca.
+- Signal-mode  virtual  accounts  with  0.05%  commission  and  0.05%  
+slippage.
+- AI decision filter (JEV / LLM) with an auditable decision timeline.
+- Strategy evolution with walk-forward validation and robustness metrics.
+- Agent Gateway and MCP server with scopes, rate limits and audit logs.
+- Optional Prometheus, Grafana and Alertmanager monitoring.
+Selection of Hardware and Software and Justification :
+Selection Justification
+Python 3.12 Rich ecosystem for data analysis (pandas, NumPy, TA-Lib) and 
+trading SDKs
+Flask + Gunicorn Lightweight, well-understood web framework; easy OpenAPI 
+generation
+PostgreSQL 18 Reliable ACID transactions and DECIMAL types for financial 
+data
+Redis 8 Fast caching and dependable Celery broker
+Kafka Scalable event distribution to many strategy evaluators
+Vue.js Responsive component-based SPA with charting libraries
+Docker Compose One-command, reproducible deployment on any operating 
+system
+Table 4.4 Selected Technologies and Justification
+30
+
+CHAPTER – 5
+SYSTEM DESIGN
+5.1 Input / Output Interface
+The user interacts with QuantTrade through the Vue.js web application and the 
+mobile H5 client. Inputs are login credentials, exchange API keys, strategy and  
+indicator code, backtest parameters and order tickets; outputs are charts, metric  
+cards, tables of trades and positions, AI reports and notifications.
+Fig. 5.1 Sign-In Screen (Desktop and Tablet)
+Fig. 5.2 Portfolio Dashboard
+31
+
+Fig. 5.3 Strategy IDE (Split-Pane Editor)
+Fig. 5.4 Live Trading and Risk Check
+32
+
+Fig. 5.5 Agent Gateway (MCP Log)
+Fig. 5.6 QuantTrade System Architecture
+33
+
+The architecture is divided into presentation, application, runtime worker,  
+state/messaging, external integration and optional observability layers. The HTTP  
+API only validates requests and stores durable commands; long-running trading  
+loops run in separate worker containers built from the same backend image.
+5.2 Interface Design
+5.2.1 Class Diagram :
+Fig. 5.7 Class Diagram of QuantTrade
+34
+
+The class diagram shows the main domain classes. A User owns credentials, 
+indicators, strategy sources and agent tokens. A StrategySource is versioned and  
+can  be  backtested  ( BacktestRun)  or  deployed  ( StrategyDeployment).  A  
+deployment  creates  PendingOrder objects  that  are  submitted  through  the  
+BaseRestClient interface, which is implemented by one adapter per exchange or  
+broker; fills update Trade/Position records.
+35
+
+5.2.2 Use Case Diagram :
+Fig. 5.8 Use Case Diagram
+Three  actors  interact  with  the  system.  The  Trader registers,  researches,  
+authors and backtests strategies, deploys them, uses Quick Trade, monitors the  
+portfolio,  manages  credentials  and  subscriptions.  The  Administrator manages  
+36
+
+users, settings, agent tokens and audit logs. The AI Agent uses a subset of trader use 
+cases through the MCP server, limited by token scopes.
+5.2.3 Activity Diagram :
+Fig. 5.9 Activity Diagram – Strategy from Idea to Live Trading
+The activity diagram shows the normal life of a strategy: after login, the user  
+writes or generates code, compiles it, backtests it until the metrics are acceptable,  
+creates a stopped deployment, runs it in signal (paper) mode and only then, after  
+confirmation and risk checks, moves to live trading and monitoring.
+37
+
+5.2.4 Data Flow Diagram :
+Fig. 5.10 Context Diagram (Level-0 DFD)
+38
+
+Fig. 5.11 Level-1 Data Flow Diagram
+The  Level-1  DFD  breaks  the  system  into  six  processes:  authentication,  
+research, code authoring, backtesting, deployment/execution and monitoring. Data  
+stores D1–D5 hold users, code, backtest results, strategies and orders, and encrypted 
+credentials.
+5.2.5 State Diagram :
+Fig. 5.12 Strategy Deployment State Diagram
+A deployment is always created in the stopped state. A start request creates a 
+pending command which the trading worker claims (processing) and completes; the 
+deployment is then running until a stop or emergency stop returns it to stopped. A 
+failed command moves it to failed until the operator fixes the problem.
+39
+
+5.2.6 E-R Diagram :
+Fig. 5.13 Entity Relationship Diagram
+The E-R diagram shows the core tables of the PostgreSQL schema. qd_users 
+is the central entity; strategies, credentials, backtests, indicators and agent tokens all 
+reference it. Pending orders, trades and positions reference a strategy deployment.
+40
+
+5.2.7 Sequence Diagram :
+Fig. 5.14 Sequence Diagram – Starting a Live Strategy and Placing an Order
+The sequence diagram shows how a live strategy is started: the API stores a  
+command and returns 202 immediately; the trading worker claims it, evaluates bars, 
+asks the AI decision filter before an entry, records a pending order, submits it to the 
+exchange adapter and records the resulting fill, position and trade.
+5.3 Database Design
+The  database  is  PostgreSQL  18.  The  schema  in  migrations/init.sql 
+contains more than 100 tables; the data dictionary of the most important tables is  
+given below. All money and quantity columns use DECIMAL to avoid rounding errors, 
+and timestamps are stored in UTC.
+41
+
+qd_users
+Column Data Type Constraint / Description
+id SERIAL Primary key
+username VARCHAR(50) Unique, not null
+password_hash VARCHAR(255) bcrypt hash, not null
+email VARCHAR(100) Unique
+nickname VARCHAR(50) Display name
+status VARCHAR(20) active / disabled / pending
+role VARCHAR(20) admin / manager / user / viewer
+credits DECIMAL(20,2) Credit balance
+vip_expires_at TIMESTAMP Membership expiry
+token_version INTEGER Invalidates old JWTs
+timezone VARCHAR(64) User time zone
+last_login_at TIMESTAMP Last login time
+created_at / updated_at TIMESTAMP Audit timestamps
+Table 5.1 Data Dictionary – qd_users
+qd_exchange_credentials
+Column Data Type Constraint / Description
+id SERIAL Primary key
+user_id INTEGER FK → qd_users(id), cascade delete
+name VARCHAR(100) Credential label
+exchange_id VARCHAR(50) binance, okx, ibkr, alpaca, …
+api_key_hint VARCHAR(50) Masked key shown in UI
+encrypted_config TEXT Fernet-encrypted JSON with keys
+created_at / updated_at TIMESTAMP Audit timestamps
+Table 5.2 Data Dictionary – qd_exchange_credentials
+qd_strategies_trading
+Column Data Type Constraint / Description
+id SERIAL Primary key
+user_id INTEGER FK → qd_users(id)
+strategy_name VARCHAR(255) Not null
+strategy_type VARCHAR(50) Default StrategyV2
+market_category VARCHAR(50) Crypto, USStock, …
+execution_mode VARCHAR(20) signal / live
+42
+
+Column Data Type Constraint / Description
+status VARCHAR(20) stopped / running
+symbol / timeframe VARCHAR Instrument and bar size
+initial_capital DECIMAL(20,8) Default 1000
+leverage INTEGER Default 1
+market_type VARCHAR(20) spot / swap
+exchange_config JSONB Credential and venue settings
+trading_config JSONB Risk and sizing settings
+source_version_id INTEGER Deployed source version
+Table 5.3 Data Dictionary – qd_strategies_trading
+pending_orders
+Column Data Type Constraint / Description
+id SERIAL Primary key
+user_id / strategy_id INTEGER Owner and strategy
+symbol VARCHAR(50) Instrument
+signal_type VARCHAR(30) open_long, close_short, …
+idempotency_key VARCHAR(180) Unique – prevents duplicates
+order_type VARCHAR(20) market / limit
+amount / price DECIMAL(20,8) Quantity and limit price
+execution_mode VARCHAR(20) signal / live
+status VARCHAR(20) pending / processing / done / failed
+attempts / max_attempts INTEGER Retry control (max 10)
+exchange_order_id VARCHAR(100) Venue order id
+filled / avg_price DECIMAL(20,8) Fill result
+runtime_fencing_token BIGINT Rejects stale workers
+Table 5.4 Data Dictionary – pending_orders
+qd_strategy_trades
+Column Data Type Constraint / Description
+id SERIAL Primary key
+strategy_id INTEGER FK → qd_strategies_trading(id)
+symbol VARCHAR(50) Instrument
+type VARCHAR(30) open_long, close_short, …
+price / amount / value DECIMAL(20,8) Execution details
+commission DECIMAL(20,8) Fee paid
+43
+
+Column Data Type Constraint / Description
+profit DECIMAL(20,8) Realised PnL
+close_reason VARCHAR(64) stop_loss, take_profit, signal, …
+pending_order_id INTEGER Source order
+created_at TIMESTAMP Trade time
+Table 5.5 Data Dictionary – qd_strategy_trades
+qd_backtest_runs
+Column Data Type Constraint / Description
+id SERIAL Primary key
+user_id / source_id INTEGER Owner and strategy source
+market / symbol / 
+timeframe VARCHAR Test instrument
+start_date / end_date VARCHAR(20) Test range
+initial_capital DECIMAL(20,8) Default 10000
+commission / slippage DECIMAL(10,6) Cost assumptions
+params_json / 
+manifest_json TEXT Parameters and compiled manifest
+status VARCHAR(20) Run status
+total_return, 
+max_drawdown, 
+sharpe_ratio, win_rate
+DOUBLE PRECISION Summary metrics
+total_trades INTEGER Number of trades
+result_json TEXT Full result payload
+Table 5.6 Data Dictionary – qd_backtest_runs
+qd_manual_positions
+Column Data Type Constraint / Description
+id SERIAL Primary key
+user_id INTEGER FK → qd_users(id)
+market / symbol VARCHAR(50) Instrument (unique per user, side, group)
+side VARCHAR(10) long / short
+quantity / entry_price DECIMAL(20,8) Position size and cost
+notes / tags / group_name TEXT / VARCHAR User annotations
+created_at / updated_at TIMESTAMP Audit timestamps
+Table 5.7 Data Dictionary – qd_manual_positions
+44
+
+qd_agent_tokens
+Column Data Type Constraint / Description
+id SERIAL Primary key
+user_id INTEGER FK → qd_users(id)
+name VARCHAR(80) Token label
+token_prefix VARCHAR(24) Shown to humans only
+token_hash VARCHAR(128) SHA-256 of token, unique
+scopes TEXT Subset of R, W, B, N, C, T
+markets / instruments TEXT Allow-lists
+paper_only BOOLEAN Default true
+rate_limit_per_min INTEGER Default 60
+max_order_notional / 
+max_daily_notional DECIMAL(24,8) Defaults 1000 / 5000
+status / expires_at VARCHAR / 
+TIMESTAMP active / revoked / expired
+Table 5.8 Data Dictionary – qd_agent_tokens
+5.4 API Design
+The human Web API follows REST conventions under /api/... and returns 
+the envelope { "code": 1, "msg": "success", "data": ... }  (code 0 for  
+errors). It has 288 documented paths generated by flask-smorest. AI agents use a  
+separate Agent Gateway under /api/agent/v1 with 51 paths. Important endpoints 
+are listed below.
+Method Endpoint Description
+POST /api/auth/login Password login (returns JWT or MFA 
+challenge)
+POST /api/auth/mfa/verify-login Verify TOTP code
+POST /api/auth/register Register new user
+GET /api/auth/info Current user information
+GET / POST /api/strategies List / create strategy deployments
+PUT / 
+DELETE /api/strategies/{id} Update / delete deployment
+POST /api/strategies/{id}/start Queue start command (202)
+POST /api/strategies/{id}/stop Queue stop command (202)
+POST /api/indicator/saveIndicator Create or update indicator
+GET /api/indicator/getIndicators List indicators
+GET / POST /api/portfolio/positions List / add manual positions
+45
+
+Method Endpoint Description
+PUT / 
+DELETE /api/portfolio/positions/{id} Update / delete position
+POST /api/credentials/create Add encrypted exchange credential
+POST /api/credentials/test Test exchange connectivity
+GET /api/health Health check
+GET /api/agent/v1/klines Agent: historical candles
+POST /api/agent/v1/backtest/run Agent: submit backtest job
+POST /api/agent/v1/quick-trade/kill-switch Agent: emergency stop
+Table 5.9 Important API Endpoints
+5.5 Security Design
+Fig. 5.15 shows the login flow with brute-force protection and MFA, and Fig. 
+5.16 shows the AI pre-trade decision gate that runs before every live entry. Exits,  
+stop-loss, take-profit and emergency actions bypass the gate, and an AI outage fails  
+open with a logged reason so that it can never trap an open position.
+Fig. 5.15 Login, Lockout and MFA Flow
+46
+
+Fig. 5.16 AI Pre-Trade Decision Flow
+Scope Capability
+R Read market data, strategies, positions
+W Write workspace artefacts and deployment configuration
+B Run backtests and simulations
+N Notification side effects
+C Credentials (administrator only)
+T Trading / runtime mutations (paper-only unless explicitly allowed)
+Table 5.10 Agent Token Scopes
+5.6 Deployment Design
+QuantTrade  is  deployed  with  Docker  Compose.  One-shot  containers  
+synchronise the environment file, apply migrations and create Kafka topics; the  
+backend  image  then  runs  as  the  API,  trading  worker,  strategy  dispatcher  and  
+evaluator, Kafka audit worker, scheduler, Celery worker and Celery beat. Fig. 5.18  
+47
+
+shows how external services are integrated, and Fig. 5.19 shows the caching, pooling 
+and asynchronous job design that keeps the API responsive.
+Fig. 5.17 Docker Compose Deployment Diagram
+Fig. 5.18 Third-Party Integrations
+Fig. 5.19 Performance Design – Caching, Pooling and Asynchronous Jobs
+48
+
+CHAPTER – 6
+CODE IMPLEMENTATION
+6.1 Implementation Environment
+QuantTrade was implemented on Visual Studio Code with Git version control. 
+The backend runs on Python 3.12 inside Docker containers; one backend image is  
+reused by several containers that run different commands:
+Container Responsibility
+backend Flask + Gunicorn HTTP API on port 5000 (authentication, 
+validation, durable commands)
+trading-worker Exchange sessions, order gateway, reconciliation, grid 
+actors
+strategy-dispatcher / evaluator Kafka-based sharded evaluation of closed bars
+scheduler-worker Portfolio monitors, payments and signal schedules
+celery-worker / celery-beat Backtests, AI analysis, reports and periodic jobs
+kafka-audit-worker Validates and records the event stream
+postgres, redis, redis-jobs, kafka Data and messaging services
+frontend, mobile, mcp Vue web client, mobile H5 client and MCP server
+Table 6.1 Runtime Processes (Containers)
+6.2 Program / Module Specification
+Module Location Description
+Authentication routes/auth.py, utils/auth.py Login, register, OAuth, MFA, JWT, 
+RBAC decorators
+AI Research services/fast_analysis*.py, llm.py Multi-provider LLM analysis and PDF 
+reports
+Indicator IDE routes/indicator.py Indicator CRUD, validation, versions, 
+AI workspace
+Strategy routes/strategy.py, 
+services/strategy_v2
+Strategy sources, deployments, 
+start/stop commands
+Backtest services/backtest*, strategy_evolution Historical simulation, metrics, 
+optimisation
+Live trading services/live_trading, pending_orders Exchange adapters, order queue, 
+reconciliation
+Quick Trade routes/quick_trade.py, 
+ai_decision_filter.py
+Manual orders with AI gate and kill 
+switch
+Portfolio routes/portfolio.py Positions, monitors, alerts
+Agent Gateway routes/agent_v1, utils/agent_auth.py Scoped machine API with audit and 
+rate limits
+49
+
+Module Location Description
+Database utils/db_postgres.py, migrations/ Connection pool, transactions, schema
+Table 6.2 Module Specification
+A session is maintained with a JWT that is sent in the Authorization: Bearer 
+header with every request. The login_required decorator verifies the token and re-
+reads the user’s role and token version from the database:
+def login_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.headers.get("Authorization", "")
+        token = auth[7:] if auth.lower().startswith("bearer ") else None
+        if not token:
+            return jsonify({"code": 401, "msg": "Token missing", "data": None}), 401
+        payload = verify_token(token)        # signature, expiry, token_version
+        if not payload:
+            return jsonify({"code": 401, "msg": "Token invalid or expired"}), 401
+        g.user_id = payload["user_id"]
+        g.user_role = payload["_verified_user_role"]   # role from database
+        return f(*args, **kwargs)
+    return decorated
+Listing 6.1 Authentication decorator
+Database  access  uses  a  thread-safe  PostgreSQL  connection  pool  and  
+parameterised queries:
+with get_db_connection() as db:
+    cur = db.cursor()
+    cur.execute("SELECT id, strategy_name, status FROM qd_strategies_trading "
+                "WHERE user_id = ? ORDER BY id DESC", (g.user_id,))
+    rows = cur.fetchall()            # list of dict rows
+ 
+with get_pg_transaction() as tx:     # atomic multi-step update
+    record_fill(tx, fill)
+    update_position(tx, fill)
+    run_after_commit(submit_followup_order, strategy_id)
+Listing 6.2 Database access and transactions
+Strategies are written against Strategy API V2; the same code runs in backtest 
+and live runtime:
+50
+
+# @param fast_period int 20 range=2:100:1
+# @param slow_period int 50 range=3:250:1
+def initialize(context):
+    g.symbol = "USStock:SPY"
+    context.set_universe([g.symbol])
+    context.subscribe(frequency="1d")
+    context.set_warmup(260)
+ 
+def handle_data(context, data):
+    bars = get_history(52, "1d", "close", g.symbol)
+    fast = float(bars["close"].tail(20).mean())
+    slow = float(bars["close"].tail(50).mean())
+    target = 0.95 if fast > slow else 0.0
+    order_target_percent(g.symbol, target, reason="dual_ema_regime",
+                         stop_loss_pct=0.05 if target > 0 else 0.0)
+Listing 6.3 Dual-EMA strategy written with Strategy API V2
+6.2.1 Strategy API V2 :
+Strategies  are  plain  Python  files  that  implement  lifecycle  handlers.  The  
+compiler reads the source, builds a manifest (markets, instruments, frequencies,  
+warm-up, leverage policy) and rejects invalid code before it can be backtested or  
+deployed.
+Handler When it is called
+initialize(context) Once; declares universe, subscriptions and warm-
+up
+before_trading_start(context, data) Before each trading session
+handle_data(context, data) On every closed bar of the subscribed frequency
+on_rebalance(context, panel) On scheduled portfolio rebalances
+after_trading_end(context, data) After each trading session
+Table 6.3 Strategy Lifecycle Handlers
+Function Meaning
+order(symbol, amount) Add or subtract a quantity
+order_value(symbol, value) Add or subtract a quote-currency value
+order_target(symbol, amount) Set a target quantity
+order_target_value(symbol, value) Set a target quote value
+order_target_percent(symbol, percent) Set a target share of portfolio equity
+Table 6.4 Order Functions
+Protection can be attached to an entry order:
+51
+
+order_target_percent(
+    g.symbol, 0.8,
+    reason="breakout_long_entry",
+    stop_loss_pct=0.03,
+    take_profit_pct=0.08,
+    trailing_stop_pct=0.025,
+    trailing_activation_pct=0.02,
+    time_limit_seconds=86400 * 10,
+)
+Listing 6.4 Entry with stop-loss, take-profit and trailing stop
+User code runs in a sandbox. File, network, database, process, dynamic-
+execution and reflection access are blocked; only  numpy,  pandas,  math,  json, 
+datetime, time, collections, functools, itertools, statistics, decimal, 
+fractions and copy may be imported, and CPU, memory and file-descriptor limits 
+are applied.
+6.2.2 Credential Encryption :
+from cryptography.fernet import Fernet
+ 
+def _fernet(secret: str) -> Fernet:
+    key = base64.urlsafe_b64encode(hashlib.sha256(secret.encode()).digest())
+    return Fernet(key)
+ 
+def encrypt_credential_blob(plaintext_json: str) -> str:
+    return _fernet(os.environ["CREDENTIAL_ENCRYPTION_KEY"]).encrypt(
+        plaintext_json.encode()).decode("ascii")
+Listing 6.5 Encrypting exchange credentials at rest
+6.2.3 Exchange Adapter Factory :
+def create_client(exchange_config: dict, *, market_type="swap") -> BaseRestClient:
+    exchange_id = exchange_config["exchange_id"].lower()
+    if exchange_id == "binance":
+        return BinanceSpotClient(...) if market_type == "spot" else 
+BinanceFuturesClient(...)
+    if exchange_id == "okx":    return OkxClient(...)
+    if exchange_id == "bitget": return BitgetClient(...)
+    if exchange_id == "bybit":  return BybitClient(...)
+    if exchange_id == "gate":   return GateClient(...)
+    if exchange_id == "htx":    return HtxClient(...)
+    raise ValueError(f"Unsupported exchange: {exchange_id}")
+Listing 6.6 Exchange client factory (simplified)
+52
+
+6.2.4 CRUD Operations :
+@portfolio_blp.route("/positions/<int:position_id>", methods=["PUT"])
+@login_required
+def update_position(position_id):
+    data = request.get_json() or {}
+    with get_db_connection() as db:
+        cur = db.cursor()
+        cur.execute("""UPDATE qd_manual_positions
+                       SET quantity = ?, entry_price = ?, updated_at = NOW()
+                       WHERE id = ? AND user_id = ?""",
+                    (data["quantity"], data["entry_price"], position_id, g.user_id))
+        db.commit()
+    return jsonify({"code": 1, "msg": "success", "data": None})
+ 
+@portfolio_blp.route("/positions/<int:position_id>", methods=["DELETE"])
+@login_required
+def delete_position(position_id):
+    with get_db_connection() as db:
+        db.cursor().execute("DELETE FROM qd_manual_positions WHERE id = ? AND 
+user_id = ?",
+                            (position_id, g.user_id))
+        db.commit()
+    return jsonify({"code": 1, "msg": "success", "data": None})
+Listing 6.7 Update and Delete with ownership check (simplified)
+6.2.5 Background Jobs :
+Finite jobs are routed to dedicated Celery queues so that slow AI work never  
+delays maintenance tasks:
+task_routes={
+    "quantdinger.tasks.fast_analysis":        {"queue": "ai"},
+    "quantdinger.tasks.agent_job":            {"queue": "jobs"},
+    "quantdinger.tasks.expire_agent_jobs":    {"queue": "maintenance"},
+    "quantdinger.tasks.market_catalog_sync":  {"queue": "maintenance"},
+    "quantdinger.tasks.worker_heartbeat":     {"queue": "maintenance"},
+}
+Listing 6.8 Celery queue routing
+6.3 Coding Standards
+A well-defined coding standard keeps the code readable and maintainable.  
+QuantTrade follows these rules:
+- Python code follows PEP 8 and is checked by the Ruff linter in CI ( ruff 
+check app scripts tests).
+- HTTP routes stay thin – they validate input and delegate to services; long-
+running loops belong to workers.
+- Every SQL statement uses parameters, never string concatenation.
+- Monetary values use DECIMAL types; timestamps are stored in UTC.
+53
+
+- Every API change updates the OpenAPI specification and passes the  
+compatibility workflow.
+- Snake_case  for  functions  and  variables,  PascalCase  for  classes,  
+UPPER_CASE for constants and environment variables.
+6.3.1 Comment Standards :
+Comments describe what is happening, why it is done, what parameters mean 
+and any side effects. The standards followed are:
+- Every  module,  class  and  public  function  starts  with  a  docstring  
+("""...""").
+- Inline comments use # and are indented at the same level as the code they 
+describe.
+- Comments explain why a decision was taken (for example, why an exit  
+bypasses the AI filter), not just what the code does.
+6.4 Deployment and Configuration
+The application is configured through a single .env file in the project root and 
+started with Docker Compose:
+git clone https://github.com/brokermr810/quantdinger.git QuantTrade
+cd QuantTrade
+cp .env.example .env
+python -c "import secrets; print(secrets.token_hex(32))"   # SECRET_KEY
+docker compose up -d --build
+docker compose ps
+curl http://127.0.0.1:5000/api/health
+ 
+# production with monitoring
+python backend_api_python/scripts/check_production_config.py --env-file .env
+docker compose -f docker-compose.yml -f docker-compose.production.yml \
+               -f docker-compose.observability.yml up -d --build
+Listing 6.9 Deployment commands
+Variable Purpose
+SECRET_KEY Signs JWT session tokens
+CREDENTIAL_ENCRYPTION_KEY Encrypts exchange credentials and MFA secrets
+ADMIN_USER / ADMIN_PASSWORD Initial administrator account
+DATABASE_URL PostgreSQL connection string
+REDIS_PASSWORD / 
+CELERY_REDIS_PASSWORD Cache and job Redis passwords
+LLM_PROVIDER, 
+OPENROUTER_API_KEY, … AI provider selection and keys
+54
+
+Variable Purpose
+JEV_API_KEY / 
+JEV_TIMEOUT_SECONDS AI decision filter (default timeout 8 s)
+AGENT_LIVE_TRADING_ENABLED Server switch for live agent trading (default false)
+GUNICORN_WORKERS / 
+GUNICORN_THREADS API concurrency
+Table 6.5 Important Environment Variables
+6.5 Version Control
+Git was used for version control with a feature-branch workflow. Every  
+change was committed with a meaningful message and merged after the automated  
+checks passed. GitHub Actions run syntax checks, Ruff lint, unit tests, release gates, 
+Docker  Compose  validation,  dependency  audits,  secret  scanning  and  OpenAPI 
+compatibility checks on every pull request.
+55
+
+CHAPTER – 7
+TESTING
+7.1 Testing Strategy
+A testing strategy integrates test-case design into a planned series of steps.  
+QuantTrade uses a bottom-up strategy: individual functions and classes are unit-
+tested first, then modules are tested together with fixtures and recorded exchange  
+responses, and finally the complete application is validated end-to-end in a Docker  
+deployment. All automated checks run in GitHub Actions on every change.
+Tool Purpose
+pytest 9, pytest-cov, pytest-timeout Test runner, coverage and hang detection
+unittest.mock / monkeypatch Replacing database, Redis and exchange calls
+Ruff Linting
+bandit, pip-audit, gitleaks Security scanning
+GitHub Actions Continuous Integration
+Table 7.1 Testing Tools
+7.2 Testing Method
+7.2.1 Unit Testing :
+Unit testing checks the smallest units of the software in isolation. The backend 
+contains 323 test files; external services are replaced by fakes so the tests are fast and 
+repeatable. The complete unit suite ran 3,346 tests: 3,346 passed, 1 skipped and 23 
+deselected (integration and stress tests) in about 137 seconds, and Ruff reported no  
+lint errors.
+56
+
+Fig. 7.1 Unit Test Execution (Security and Transaction Modules)
+Fig. 7.2 Full Unit Test Suite and Lint Result
+7.2.2 Integration Testing :
+Integration  testing  verifies  that  modules  work  together.  QuantTrade’s  
+integration  tests  run  against  a  real  PostgreSQL  database  (fill  accounting,  
+idempotency, referral flows) and optional exchange testnets, and release-gate tests  
+protect live order execution before every release.
+7.2.3 Validation Testing :
+After  integration,  the  complete  application  was  validated  against  the  
+requirements by deploying it with Docker Compose and executing the end-to-end  
+scenario: login with MFA, adding a credential, AI research, indicator and strategy  
+creation, backtest, signal-mode deployment, Quick Trade with the AI filter and  
+monitoring in Grafana.
+57
+
+7.3 Test Cases
+7.3.1 Test Suite :
+TC ID Module Test Case Expected Result Status
+TC-01 Login Valid username and password JWT returned / MFA challenge Pass
+TC-02 Login Five wrong passwords Account blocked for 30 
+minutes Pass
+TC-03 Auth Token with forged admin role Database role used Pass
+TC-04 Auth Token without token_version Request rejected Pass
+TC-05 Credentials Rotate SECRET_KEY after 
+encryption Credential still decrypts Pass
+TC-06 Database Exception inside transaction Rolled back, no commit Pass
+TC-07 Database Rolled-back fill No follow-up order sent Pass
+TC-08 Backtest Zero tracking error Ratio unset, status reported Pass
+TC-09 Backtest Range above allowed bars Request rejected Pass
+TC-10 Agent Gateway Token without T scope places 
+order 403 Forbidden Pass
+TC-11 AI Filter Provider unavailable Fail open and logged Pass
+TC-12 Portfolio Add position with zero 
+quantity 400 validation error Pass
+TC-13 Strategy Stop-loss on entry bar Position protected Pass
+Table 7.2 Test Suite
+7.3.2 Module-wise Test Cases :
+Login and Registration Module
+TC ID Test Case Input Expected Result Status
+L-01 Login with valid credentials Correct username and 
+password
+JWT returned, dashboard 
+opens Pass
+L-02 Login with wrong password Wrong password "Invalid credentials" 
+message Pass
+L-03 Login with empty fields Blank username Validation error Pass
+L-04 Repeated failed logins 5 wrong passwords Account blocked 30 min Pass
+L-05 Login with MFA enabled Valid password MFA challenge shown Pass
+L-06 Wrong TOTP code Invalid 6-digit code Login rejected Pass
+L-07 Register duplicate e-mail Existing e-mail Error: already registered Pass
+L-08 Change password Old + new password Old tokens invalidated Pass
+Table 7.3 Test Cases – Login and Registration
+58
+
+Strategy and Backtest Module
+TC ID Test Case Input Expected Result Status
+S-01 Compile valid strategy Dual-EMA template No errors, manifest built Pass
+S-02 Compile without initialize Code missing initialize() strategyV2.initializeRequire
+d Pass
+S-03 Forbidden import import os Rejected by sandbox Pass
+S-04 Run backtest 1 year, 0.1% fee Metrics and ledger shown Pass
+S-05 Backtest too long Range beyond limit Request rejected Pass
+S-06 Create deployment Signal mode Created in stopped state Pass
+S-07 Start deployment twice Two start clicks Only one active command Pass
+S-08 Delete running strategy Running deployment Must stop first Pass
+Table 7.4 Test Cases – Strategy and Backtest
+Portfolio and Credential Module
+TC ID Test Case Input Expected Result Status
+P-01 Add position BTC, 0.05, 61250 Saved as BTC/USDT Pass
+P-02 Add position with zero 
+quantity quantity = 0 400 validation error Pass
+P-03 Update position New quantity Updated values shown Pass
+P-04 Delete another user’s position Foreign id No rows affected Pass
+P-05 Add exchange credential API key + secret Stored encrypted, hint 
+shown Pass
+P-06 Test credential Testnet key Connectivity OK Pass
+Table 7.5 Test Cases – Portfolio and Credentials
+Agent Gateway and AI Module
+TC ID Test Case Input Expected Result Status
+A-01 Call without token No header 401 Unauthorized Pass
+A-02 Read klines with R scope Valid token Candles returned Pass
+A-03 Place order without T scope R-only token 403 Forbidden Pass
+A-04 Exceed rate limit 61 calls in 1 min 429 Too Many Requests Pass
+A-05 Repeat write with same key Same Idempotency-Key Stored response replayed Pass
+A-06 AI provider down No LLM / JEV Fail open, reason logged Pass
+A-07 AI rejects entry REJECT decision Order not sent, ai_rejected Pass
+Table 7.6 Test Cases – Agent Gateway and AI
+59
+
+7.4 Test Results Summary
+Test Type Executed Passed Failed Remarks
+Automated unit tests 3,347 3,346 0 1 skipped; 23 
+integration/stress deselected
+Lint (Ruff) All files All 0 All checks passed
+Manual functional test cases 42 42 0 Tables 7.2 – 7.6
+Validation (end-to-end demo) 1 scenario Pass 0 Docker deployment
+Table 7.7 Test Results Summary
+7.5 Debugging and Defects Fixed
+Defects were reproduced with focused tests, traced using structured JSON logs 
+with request IDs, and fixed. Important defects are listed below.
+Defect Cause Fix
+Duplicate Quick Trade orders on 
+retry No client order identifier Client order ID with unique index
+Follow-up order after failed fill 
+update Action ran before commit run_after_commit() executes after 
+commit only
+Stale role after demotion Role trusted from JWT claim Role and token_version re-read 
+from database
+Credentials unreadable after key 
+rotation
+Encryption keyed by 
+SECRET_KEY
+Dedicated 
+CREDENTIAL_ENCRYPTION_
+KEY
+NaN values broke charts NaN/Infinity in JSON SafeJSONProvider converts them 
+to null
+Table 7.8 Defects Found and Fixed
+60
+
+CHAPTER – 8
+LIMITATIONS AND FUTURE ENHANCEMENT
+8.1 Limitations
+Though we tried our best in developing this system, it has some limitations:
+- Strategy API V2 backtests do not yet model crypto funding payments.
+- The full stack needs about 8 GB RAM, which is heavy for small machines.
+- The AI decision filter does not yet cover grid, DCA and martingale  
+strategies.
+- Interactive Brokers requires TWS / IB Gateway running on the user’s  
+machine.
+- Backtest  results  depend  on  the  quality  of  historical  data  from  free  
+providers.
+- AI output can contain errors and must be reviewed by a human.
+- HK/CN stocks, Forex and Futures are supported for data and backtesting  
+only, not live trading.
+- The web and mobile client source code are published separately under  
+their own licence.
+8.2 Future Enhancement
+There is always scope for enhancement. The following changes can increase  
+the capability and efficiency of the system:
+- Funding-fee  modelling  and  more  realistic  order-book  simulation  in  
+backtests.
+- Additional exchanges, brokers and asset classes such as options.
+- Multi-host scaling of strategy evaluators (hyperscale architecture).
+- Native mobile notifications and richer mobile trading features.
+- More  AI  skills,  such  as  automatic  strategy  review  and  explainable  
+decisions.
+- Portfolio-level risk management across strategies.
+- Support for options strategies and Greeks-based risk.
+- A visual (no-code) strategy builder for non-programmers.
+- Paper-trading competitions and a community leaderboard.
+61
+
+CHAPTER – 9
+CONCLUSION
+QuantTrade  successfully  brings  AI  research,  strategy  development,  
+backtesting, paper trading, live execution and monitoring together in a single self-
+hosted platform. The layered, process-separated architecture keeps the web API  
+responsive while dedicated workers handle trading, scheduling and background jobs. 
+Durable commands, idempotency keys, leases and transactions prevent duplicate or  
+lost orders, and encrypted credentials, MFA, role-based access control and paper-
+only AI agents protect users’ capital and data.
+The project was developed by following the complete software development  
+life cycle through the fifteen laboratory experiments: requirement analysis and SRS, 
+design, environment setup, frontend and backend implementation, API integration,  
+security, CRUD operations, testing, optimisation, documentation and deployment.  
+The automated test suite passed successfully and the system was deployed with  
+Docker Compose. QuantTrade therefore fulfils its objective of giving traders an  
+institutional-style, AI-augmented trading platform that remains fully under their own 
+control.
+62
+
+CHAPTER – 10
+REFERENCES
+Websites :
+- QuantDinger  open-source  repository  (reference  implementation):  
+https://github.com/brokermr810/quantdinger
+- Flask documentation: https://flask.palletsprojects.com/
+- PostgreSQL documentation: https://www.postgresql.org/docs/
+- Redis documentation: https://redis.io/docs/
+- Celery documentation: https://docs.celeryq.dev/
+- Apache Kafka documentation: https://kafka.apache.org/documentation/
+- Vue.js documentation: https://vuejs.org/
+- Docker documentation: https://docs.docker.com/
+- Model Context Protocol: https://modelcontextprotocol.io/
+Books / Standards :
+- IEEE  Std  830-1998,  IEEE  Recommended  Practice  for  Software  
+Requirements Specifications.
+- Roger S. Pressman,  Software Engineering: A Practitioner’s Approach , 
+McGraw-Hill.
+- Ernest  P.  Chan,  Quantitative  Trading:  How  to  Build  Your  Own  
+Algorithmic Trading Business, Wiley.
+- QuantTrade Mini Project Lab Manual, Department of CE & CSE, Atmiya 
+University.
+63
